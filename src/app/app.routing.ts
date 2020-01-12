@@ -62,7 +62,8 @@ export const routes: Routes = [{
       loadChildren: () => import('./component/main-component/main-component.module').then(m => m.MainComponentModule)
     }
   ]
-}, {
+},
+ {
   path: '**',
   component: PageNotFoundComponent
 }];

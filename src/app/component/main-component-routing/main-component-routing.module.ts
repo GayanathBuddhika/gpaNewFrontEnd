@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { FacultyComponent } from '../faculty/faculty.component';
+import { MainResultComponent } from '../result/main-result/main-result.component';
 const routes: Routes = [
   {
     path: '',
@@ -9,6 +10,14 @@ const routes: Routes = [
     component: FacultyComponent,
     data: {
       title: 'Dashboard Component'
+    }
+  },
+  {
+    path: 'result',
+    pathMatch: 'full',
+    component: MainResultComponent,
+    data: {
+      title: 'mainResult Component'
     }
   }
 ];
