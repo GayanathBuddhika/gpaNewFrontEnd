@@ -1,5 +1,6 @@
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { FacultyService } from 'app/service/faculty.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Faculty } from 'app/model/Faculty';
 
 @Component({
@@ -8,10 +9,13 @@ import { Faculty } from 'app/model/Faculty';
   styleUrls: ['./faculty-list.component.scss']
 })
 export class FacultyListComponent implements OnInit {
+  modalRefOfFacultyList: BsModalRef;
   headers: any[];
   facultyList: Faculty[] = [];
+  onSelectedFaculty: Faculty;
   constructor(
-    private facultyService: FacultyService
+    private facultyService: FacultyService,
+    private modalService: BsModalService
   ) { }
 
   ngOnInit() {
@@ -26,12 +30,23 @@ export class FacultyListComponent implements OnInit {
 
       ];
 
+      this.facultyService.get_ngxModal_edit_$().subscribe(data => {
+        if (data) {
+          this.modalRefOfFacultyList.hide();
+        }
+      })
+
     this.facultyService._addFacultyToList.subscribe(data => {
       console.log("*********aaaa");
       let facList = [...this.facultyList];
       facList.unshift(data);
       this.facultyList = facList;
       console.log("*********aaaa",this.facultyList);
+    })
+
+    this.facultyService._editFacultyToList.subscribe(data => {
+      let index = this.facultyList.findIndex(faculty => faculty.id === data.id);
+      this.facultyList[index] = data;
     })
   }
 
@@ -43,8 +58,10 @@ export class FacultyListComponent implements OnInit {
       console.log("err", err);
     })
   }
-  update(faculty: any) {
+  update(faculty: Faculty, template: TemplateRef<any>) {
     console.log("update  ", faculty);
+    this.onSelectedFaculty = faculty;
+    this.openModal(template);
   }
 
   delete(faculty: Faculty) {
@@ -56,4 +73,8 @@ export class FacultyListComponent implements OnInit {
     console.log("delete  ", faculty);
   }
 
+  
+  openModal(template: TemplateRef<any>){
+    this.modalRefOfFacultyList = this.modalService.show(template,{class: 'modal-lg'});
+  }
 }
