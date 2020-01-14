@@ -42,13 +42,19 @@
             </a>
         </li>
         <li>
-            <a  [routerLink]="['/faculty']" [routerLinkActive]="['active']">
+            <a  [routerLink]="['/faculty']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
                 <i class="fa fa-bars"></i>
                 <span class="hide-menu">Faculty</span>
             </a>
         </li>
         <li>
-            <a  [routerLink]="['/faculty/result']" [routerLinkActive]="['active']">
+            <a  [routerLink]="['/faculty/addFaculty']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+                <i class="fa fa-bars"></i>
+                <span class="hide-menu">Add Faculty</span>
+            </a>
+        </li>
+        <li>
+            <a  [routerLink]="['/faculty/result']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
                 <i class="fa fa-bars"></i>
                 <span class="hide-menu">Result</span>
             </a>

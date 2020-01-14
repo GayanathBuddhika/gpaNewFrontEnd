@@ -1,15 +1,43 @@
+import { FacultyListComponent } from './../faculty/facultylist/faculty-list/faculty-list.component';
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { FacultyComponent } from '../faculty/faculty.component';
 import { MainComponentRoutingModule } from '../main-component-routing/main-component-routing.module';
 import { MainResultComponent } from '../result/main-result/main-result.component';
+import { AddFacultyComponent } from '../faculty/addFaculty/add-faculty/add-faculty.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import {TableModule} from 'primeng/table';
+import { ModalModule } from 'ngx-bootstrap';
+
+
+
+
 
 @NgModule({
-  declarations: [FacultyComponent,MainResultComponent],
+  declarations: [
+    FacultyComponent,
+    MainResultComponent,
+    AddFacultyComponent,
+    FacultyListComponent
+    
+
+  ],
   imports: [
+
+    CommonModule,
     MainComponentRoutingModule,
-    CommonModule
-  ]
+    ReactiveFormsModule,
+    FormsModule,
+    TableModule,
+    ModalModule.forRoot(),
+
+    // BrowserAnimationsModule
+
+  ],
+  entryComponents: [
+    AddFacultyComponent
+  ],
 })
 export class MainComponentModule { }

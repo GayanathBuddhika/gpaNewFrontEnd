@@ -1,3 +1,4 @@
+import { AddFacultyComponent } from './../faculty/addFaculty/add-faculty/add-faculty.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
@@ -14,8 +15,16 @@ const routes: Routes = [
   },
   {
     path: 'result',
-    pathMatch: 'full',
+    // pathMatch: 'full',
     component: MainResultComponent,
+    data: {
+      title: 'mainResult Component'
+    }
+  },
+  {
+    path: 'addFaculty',
+    // pathMatch: 'full',
+    component: AddFacultyComponent,
     data: {
       title: 'mainResult Component'
     }
@@ -25,6 +34,7 @@ const routes: Routes = [
   imports: [
     RouterModule.forChild(routes)
   ],
+
   exports: [
     RouterModule
   ]
