@@ -66,6 +66,10 @@ export class FacultyListComponent implements OnInit {
 
   delete(faculty: Faculty) {
     this.facultyService.deleteFaculty(faculty.id).subscribe(data => {
+
+      let index = this.facultyList.indexOf(faculty);
+     // this.facultyList.splice(index, 0);
+      this.facultyList = this.facultyList.filter((val, i) => i != index);
       console.log("data", data);
     }, err => {
       console.log("err", err);

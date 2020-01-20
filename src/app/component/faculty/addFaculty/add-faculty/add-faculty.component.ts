@@ -56,7 +56,7 @@ export class AddFacultyComponent implements OnInit {
     this.faculty = this.facultyForm.value;
     if(this.edit){
       this.faculty.id = this.selecttedFaculty.id;
-      this.faculty.ai = this.selecttedFaculty.ai;
+      //this.faculty.ai = this.selecttedFaculty.ai;
       this.faculty.edit = this.edit;
     }
     this.facultyService.addFaculty(this.faculty).subscribe(data => {
