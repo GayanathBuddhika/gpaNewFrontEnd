@@ -11,6 +11,7 @@ import { MainComponentRoutingModule } from '../main-component-routing/main-compo
 import { MainResultComponent } from '../result/main-result/main-result.component';
 import { AddFacultyComponent } from '../faculty/addFaculty/add-faculty/add-faculty.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { DropdownModule } from 'primeng/dropdown';
 import { TableModule } from 'primeng/table';
 import { ModalModule } from 'ngx-bootstrap';
 
@@ -37,6 +38,7 @@ import { ModalModule } from 'ngx-bootstrap';
     ReactiveFormsModule,
     FormsModule,
     TableModule,
+    DropdownModule,
     ModalModule.forRoot(),
 
     // BrowserAnimationsModule

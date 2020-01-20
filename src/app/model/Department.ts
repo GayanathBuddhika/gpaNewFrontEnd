@@ -4,4 +4,5 @@ export class Department{
     ai: string;
     name: string;
     faculty: Faculty;
+    edit : Boolean;
 }
