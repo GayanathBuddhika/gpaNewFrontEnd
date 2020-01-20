@@ -4,13 +4,22 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { FacultyComponent } from '../faculty/faculty.component';
 import { MainResultComponent } from '../result/main-result/main-result.component';
+import { DepartmentComponent } from '../department/department.component';
 const routes: Routes = [
+  // {
+  //   path: '',
+  //   pathMatch: 'full',
+  //   component: FacultyComponent,
+  //   data: {
+  //     title: 'Dashboard Component'
+  //   }
+  // },
   {
-    path: '',
+    path: 'faculty',
     pathMatch: 'full',
     component: FacultyComponent,
     data: {
-      title: 'Dashboard Component'
+      title: 'faculty Component'
     }
   },
   {
@@ -27,6 +36,14 @@ const routes: Routes = [
     component: AddFacultyComponent,
     data: {
       title: 'mainResult Component'
+    }
+  },
+  {
+    path: 'department',
+    // pathMatch: 'full',
+    component: DepartmentComponent,
+    data: {
+      title: 'Department'
     }
   }
 ];

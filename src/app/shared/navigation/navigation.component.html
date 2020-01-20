@@ -42,19 +42,25 @@
             </a>
         </li>
         <li>
-            <a  [routerLink]="['/faculty']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+            <a  [routerLink]="['/main/faculty']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
                 <i class="fa fa-bars"></i>
                 <span class="hide-menu">Faculty</span>
             </a>
         </li>
         <li>
-            <a  [routerLink]="['/faculty/addFaculty']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+            <a  [routerLink]="['/main/department']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+                <i class="fa fa-bars"></i>
+                <span class="hide-menu">Department</span>
+            </a>
+        </li>
+        <!-- <li>
+            <a  [routerLink]="['/addFaculty']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
                 <i class="fa fa-bars"></i>
                 <span class="hide-menu">Add Faculty</span>
             </a>
-        </li>
+        </li> -->
         <li>
-            <a  [routerLink]="['/faculty/result']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+            <a  [routerLink]="['/main/result']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
                 <i class="fa fa-bars"></i>
                 <span class="hide-menu">Result</span>
             </a>

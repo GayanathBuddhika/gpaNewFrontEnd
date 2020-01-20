@@ -11,6 +11,9 @@ import { PageNotFoundComponent } from "./page-not-found/page-not-found.component
 import { HeaderComponent } from "./shared/header/header.component";
 import { NavigationComponent } from "./shared/navigation/navigation.component";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+// import { DepartmentComponent } from './component/department/department/department.component';
+// import { AddDepartmentComponent } from './component/department/addDepartment/add-department/add-department.component';
+// import { DepartmentListComponent } from './component/department/departmentList/department-list/department-list.component';
 
 
 
@@ -23,7 +26,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     PageNotFoundComponent,
     HeaderComponent,
     LeftNavTemplateComponent,
-    NavigationComponent,
+    NavigationComponent
+   
     
 
   ],

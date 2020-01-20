@@ -51,10 +51,10 @@ export const routes: Routes = [{
   ]
 },
 {
-  path: 'faculty',
+  path: 'main',
   component: LeftNavTemplateComponent,
   data: {
-    title: 'Faculty'
+    title: 'mainModule'
   },
   children: [
     {

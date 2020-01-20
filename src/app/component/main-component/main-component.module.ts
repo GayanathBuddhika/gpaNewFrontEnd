@@ -1,3 +1,6 @@
+import { DepartmentListComponent } from './../department//department-list/department-list.component';
+import { AddDepartmentComponent } from './../department/add-department/add-department.component';
+import { DepartmentComponent } from './../department/department.component';
 import { FacultyListComponent } from './../faculty/facultylist/faculty-list/faculty-list.component';
 
 import { NgModule } from '@angular/core';
@@ -8,7 +11,7 @@ import { MainComponentRoutingModule } from '../main-component-routing/main-compo
 import { MainResultComponent } from '../result/main-result/main-result.component';
 import { AddFacultyComponent } from '../faculty/addFaculty/add-faculty/add-faculty.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import {TableModule} from 'primeng/table';
+import { TableModule } from 'primeng/table';
 import { ModalModule } from 'ngx-bootstrap';
 
 
@@ -20,8 +23,11 @@ import { ModalModule } from 'ngx-bootstrap';
     FacultyComponent,
     MainResultComponent,
     AddFacultyComponent,
-    FacultyListComponent
-    
+    FacultyListComponent,
+    DepartmentComponent,
+    AddDepartmentComponent,
+    DepartmentListComponent
+
 
   ],
   imports: [
