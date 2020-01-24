@@ -6,6 +6,6 @@ export class Result {
     ai: string;
     result: string;
     examDate: string;
-    studentCourse: StudentCourae; 
+    studentCourse: StudentCourse; 
 
 }

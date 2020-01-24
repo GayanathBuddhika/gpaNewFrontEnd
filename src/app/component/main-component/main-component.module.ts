@@ -2,6 +2,9 @@ import { DepartmentListComponent } from './../department//department-list/depart
 import { AddDepartmentComponent } from './../department/add-department/add-department.component';
 import { DepartmentComponent } from './../department/department.component';
 import { FacultyListComponent } from './../faculty/facultylist/faculty-list/faculty-list.component';
+import { StudentComponent } from './../student/student.component';
+import { StudentListComponent } from './../student/student-list/student-list.component';
+import { StudentAddComponent } from './../student/student-add/student-add.component';
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -19,6 +22,7 @@ import { ModalModule } from 'ngx-bootstrap';
 
 
 
+
 @NgModule({
   declarations: [
     FacultyComponent,
@@ -27,7 +31,11 @@ import { ModalModule } from 'ngx-bootstrap';
     FacultyListComponent,
     DepartmentComponent,
     AddDepartmentComponent,
-    DepartmentListComponent
+    DepartmentListComponent,   
+    StudentComponent,
+    StudentListComponent,
+    StudentAddComponent   
+
 
 
   ],
