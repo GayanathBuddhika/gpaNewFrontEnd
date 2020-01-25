@@ -76,6 +76,16 @@ export class StudentListComponent implements OnInit {
     this.openModal(addStudedntTemplate);
   }
 
+  delete(student : Student){
+
+    this.studentService.deleteStudent(student.id).subscribe(data =>{
+      let index = this.studentList.indexOf(student);
+      this.studentList = this.studentList.filter((val, i) => i != index);
+    },err =>{
+      console.log(err);
+    })
+
+  }
 
   openModal(template: TemplateRef<any>) {
     this.modalRefOfStudentList = this.modalService.show(template, { class: 'modal-lg' });

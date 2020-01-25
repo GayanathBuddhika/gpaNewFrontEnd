@@ -24,6 +24,11 @@ export class StudentService {
   addStudent(studednt: Student){
     return this.http.post<any>("http://localhost:8080/student/addStudent/",studednt );
   }
+  deleteStudent(studedntId: string){
+    return this.http.post<any>("http://localhost:8080/student/deleteStudent/" + studedntId, {});
+  }
+
+
 
   _set_ngxModal_add(value: boolean) {
     this._ngxModal_add.next(value);
