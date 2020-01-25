@@ -1,3 +1,4 @@
+import { DegreeProgramComponent } from './../degree-program/degree-program.component';
 import { StudentComponent } from './../student/student.component';
 import { AddFacultyComponent } from './../faculty/addFaculty/add-faculty/add-faculty.component';
 import { NgModule } from '@angular/core';
@@ -54,7 +55,16 @@ const routes: Routes = [
     data: {
       title: 'Department'
     }
+  },
+  {
+    path: 'student',
+    // pathMatch: 'full',
+    component: DegreeProgramComponent,
+    data: {
+      title: 'Department'
+    }
   }
+
 
 ];
 @NgModule({

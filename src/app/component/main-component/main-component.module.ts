@@ -1,3 +1,6 @@
+import { DegreeProgramListComponent } from './../degree-program/degree-program-list/degree-program-list.component';
+import { AddDegreeProgramComponent } from './../degree-program/add-degree-program/add-degree-program.component';
+import { DegreeProgramComponent } from './../degree-program/degree-program.component';
 import { DepartmentListComponent } from './../department//department-list/department-list.component';
 import { AddDepartmentComponent } from './../department/add-department/add-department.component';
 import { DepartmentComponent } from './../department/department.component';
@@ -34,7 +37,10 @@ import { ModalModule } from 'ngx-bootstrap';
     DepartmentListComponent,   
     StudentComponent,
     StudentListComponent,
-    StudentAddComponent   
+    StudentAddComponent,
+    DegreeProgramComponent,
+    AddDegreeProgramComponent,
+    DegreeProgramListComponent 
 
 
 

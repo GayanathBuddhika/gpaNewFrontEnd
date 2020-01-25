@@ -13,23 +13,10 @@
             </div>
           </div>
           <div class="row">          
-            <app-degree-program-list></app-degree-program-list>
+            <app-department-list></app-department-list>
           </div>
       </div>
       </div>
     </div>
   </div>
 </div>
-
-<!-- for add company modal -->
-<ng-template #addDepartmentTemplate>
-  <div class="modal-header">
-      <h4 class="modal-title pull-left">add department</h4>
-      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-          <span aria-hidden="true">&times;</span>
-      </button>
-  </div>
-  <div class="modal-body">
-      <app-add-department></app-add-department>
-  </div>
-</ng-template>
