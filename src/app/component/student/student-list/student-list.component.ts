@@ -1,6 +1,7 @@
-import { Student } from './../../../model/Student';
+import { Student } from 'app/model/Student';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { StudentService } from './../../../service/student.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 
 @Component({
   selector: 'app-student-list',
@@ -8,10 +9,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./student-list.component.scss']
 })
 export class StudentListComponent implements OnInit {
-  studentList: Student[]=[];
+  
+    // --- for modal
+  modalRefOfStudentList: BsModalRef;
   headers: any[];
+  studentList: Student[]=[];
+  selectedStudednt: Student; 
+   
 
-  constructor(private studentService: StudentService) { }
+  constructor(
+    private studentService: StudentService,
+    private modalService: BsModalService
+    ) { }
 
   ngOnInit() {
     this.getAllStudent();
@@ -27,6 +36,29 @@ export class StudentListComponent implements OnInit {
       { field: 'delete', header: 'Delete' }
 
     ];
+  
+  this.studentService.get_ngxModal_edit_$().subscribe(data =>{
+    if(data){
+      this.modalRefOfStudentList.hide()
+      this.studentService._set_ngxModal_edit(false)
+    }
+  })
+
+  this.studentService._editStudentToList.subscribe(data =>{
+  let index = this.studentList.findIndex(student => student.id === data.id)
+  this.studentList[index] = data;
+
+  })
+
+  this.studentService._addStudentToList.subscribe(data =>{
+    let st = [...this.studentList];
+    st.unshift(data);
+
+    this.studentList = st;
+
+
+  })
+
   }
 
 
@@ -37,6 +69,16 @@ export class StudentListComponent implements OnInit {
     }, err =>{
       console.log(err)
     })
+  }
+
+  update(student, addStudedntTemplate : TemplateRef<any>){
+    this.selectedStudednt = student;
+    this.openModal(addStudedntTemplate);
+  }
+
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRefOfStudentList = this.modalService.show(template, { class: 'modal-lg' });
   }
 
 }

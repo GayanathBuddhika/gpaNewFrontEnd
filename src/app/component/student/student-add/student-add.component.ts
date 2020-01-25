@@ -15,6 +15,7 @@ export class StudentAddComponent implements OnInit {
  studentForm : FormGroup;
  studentForSave: Student;
  departmentList: Department[]=[];
+ @Input() selectedStudednt: Student;
  @Input() edit: Boolean= false;
   constructor(
     private formBuilder: FormBuilder,
@@ -35,7 +36,18 @@ export class StudentAddComponent implements OnInit {
     });
 
   }
-
+    // --- set the selected employee value to the form input when edit value is true
+    ngAfterViewInit() {
+      if (this.edit) {
+        this.studentForm.get('epNumber').patchValue(this.selectedStudednt.epNumber);
+        this.studentForm.get('registrationNumber').patchValue(this.selectedStudednt.registrationNumber);
+        this.studentForm.get('batch').patchValue(this.selectedStudednt.batch);
+        this.studentForm.get('studentName').patchValue(this.selectedStudednt.studentName);
+        this.studentForm.get('degreeProYear').patchValue(this.selectedStudednt.degreeProYear);
+        this.studentForm.get('department').patchValue(this.selectedStudednt.department);
+  
+      }
+    }
 
   getAllDepartment(){
     this.departmentSertvice.getAllDepartments().subscribe(data =>{
@@ -48,8 +60,32 @@ export class StudentAddComponent implements OnInit {
 
   savestudent() {
     console.log("faculty", this.studentForm.value);
-    this.studentForSave= this.studentForm.value;
+    this.studentForSave = this.studentForm.value;
+    if(this.edit){
+      this.studentForSave.id= this.selectedStudednt.id;
+      this.studentForSave.edit = this.edit;
+    }
+
+
+
+
     this.studedntService.addStudent(this.studentForSave).subscribe(data =>{
+
+
+      if(this.edit){
+        if(data.action === "saved"){          
+          console.log("saved student ", data.student);
+          this.studedntService._editStudentToList.next(data.student);
+          this.studedntService._set_ngxModal_edit(true);
+  
+        }
+      }else{
+        if(data.action === "saved"){      
+        this.studedntService._addStudentToList.next(data.student);
+        this.studedntService._set_ngxModal_add(true);
+        }
+      }
+      
       console.log("save student ", data);
     },err =>{
       console.log(err);

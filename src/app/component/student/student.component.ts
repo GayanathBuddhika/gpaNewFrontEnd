@@ -17,6 +17,15 @@ export class StudentComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    
+    this.studentService.get_ngxModal_add_$().subscribe(data =>{
+      if(data){
+        this.modalRef.hide();
+        this.studentService._set_ngxModal_add(false);
+      }
+    
+    })
+
   }
 
   openModal(template: TemplateRef<any>) {

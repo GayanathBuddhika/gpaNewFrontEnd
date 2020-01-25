@@ -9,4 +9,5 @@ export class Student{
     studentName: string;
     degreeProYear: number;
     department: Department;
+    edit: Boolean;
 }
