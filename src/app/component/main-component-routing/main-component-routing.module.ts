@@ -57,7 +57,7 @@ const routes: Routes = [
     }
   },
   {
-    path: 'student',
+    path: 'degreeProgram',
     // pathMatch: 'full',
     component: DegreeProgramComponent,
     data: {
