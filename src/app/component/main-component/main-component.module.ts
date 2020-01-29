@@ -1,3 +1,6 @@
+import { CourseListComponent } from './../course/course-list/course-list.component';
+import { AddCourseComponent } from './../course/add-course/add-course.component';
+import { CourseComponent } from './../course/course.component';
 import { DegreeProgramListComponent } from './../degree-program/degree-program-list/degree-program-list.component';
 import { AddDegreeProgramComponent } from './../degree-program/add-degree-program/add-degree-program.component';
 import { DegreeProgramComponent } from './../degree-program/degree-program.component';
@@ -47,6 +50,9 @@ import { LectureListComponent } from '../lecture/lecture-list/lecture-list.compo
     LectureComponent,
     AddLectureComponent,
     LectureListComponent,
+    CourseComponent,
+    AddCourseComponent,
+    CourseListComponent,
 
 
 

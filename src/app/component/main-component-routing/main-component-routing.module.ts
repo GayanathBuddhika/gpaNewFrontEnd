@@ -1,3 +1,4 @@
+import { CourseComponent } from './../course/course.component';
 import { DegreeProgramComponent } from './../degree-program/degree-program.component';
 import { StudentComponent } from './../student/student.component';
 import { AddFacultyComponent } from './../faculty/addFaculty/add-faculty/add-faculty.component';
@@ -69,6 +70,14 @@ const routes: Routes = [
     path: 'lecture',
     // pathMatch: 'full',
     component: LectureComponent,
+    data: {
+      title: 'Department'
+    }
+  },
+  {
+    path: 'course',
+    // pathMatch: 'full',
+    component: CourseComponent,
     data: {
       title: 'Department'
     }

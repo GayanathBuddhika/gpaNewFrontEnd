@@ -71,7 +71,12 @@
                 <span class="hide-menu">Lecture</span>
             </a>
         </li>
-     
+        <li>
+            <a  [routerLink]="['/main/course']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+                <i class="fa fa-bars"></i>
+                <span class="hide-menu">Course</span>
+            </a>
+        </li>
         <!-- <li>
             <a  [routerLink]="['/addFaculty']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
                 <i class="fa fa-bars"></i>
