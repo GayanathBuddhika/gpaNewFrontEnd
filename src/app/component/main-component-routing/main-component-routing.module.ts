@@ -7,6 +7,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { FacultyComponent } from '../faculty/faculty.component';
 import { MainResultComponent } from '../result/main-result/main-result.component';
 import { DepartmentComponent } from '../department/department.component';
+import { LectureComponent } from '../lecture/lecture.component';
 const routes: Routes = [
   // {
   //   path: '',
@@ -63,7 +64,16 @@ const routes: Routes = [
     data: {
       title: 'Department'
     }
+  },
+  {
+    path: 'lecture',
+    // pathMatch: 'full',
+    component: LectureComponent,
+    data: {
+      title: 'Department'
+    }
   }
+
 
 
 ];

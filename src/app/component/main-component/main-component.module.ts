@@ -20,6 +20,9 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { DropdownModule } from 'primeng/dropdown';
 import { TableModule } from 'primeng/table';
 import { ModalModule } from 'ngx-bootstrap';
+import { LectureComponent } from '../lecture/lecture.component';
+import { AddLectureComponent } from '../lecture/add-lecture/add-lecture.component';
+import { LectureListComponent } from '../lecture/lecture-list/lecture-list.component';
 
 
 
@@ -40,7 +43,10 @@ import { ModalModule } from 'ngx-bootstrap';
     StudentAddComponent,
     DegreeProgramComponent,
     AddDegreeProgramComponent,
-    DegreeProgramListComponent 
+    DegreeProgramListComponent,    
+    LectureComponent,
+    AddLectureComponent,
+    LectureListComponent,
 
 
 

@@ -5,5 +5,6 @@ export class Lecture{
     ai: string;
     registrationNumber: string;
     name: string;
-    department: Department
+    department: Department;
+    edit: Boolean;
 }
