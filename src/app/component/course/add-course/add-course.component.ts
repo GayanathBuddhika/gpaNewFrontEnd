@@ -1,3 +1,5 @@
+
+import { DegreeProgramListComponent } from './../../degree-program/degree-program-list/degree-program-list.component';
 import { LectureServiceService } from './../../../service/lecture-service.service';
 import { DegreeProgramService } from 'app/service/degree-program.service';
 import { CourseService } from './../../../service/course.service';
@@ -7,6 +9,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DegreeLectureCourse } from 'app/model/DegreeLectureCourse';
 import { DegreeCourse } from 'app/model/DegreeCourse';
+import { Course } from 'app/model/Course';
 
 @Component({
   selector: 'app-add-course',
@@ -15,10 +18,11 @@ import { DegreeCourse } from 'app/model/DegreeCourse';
 })
 export class AddCourseComponent implements OnInit {
   courseForm: FormGroup;
-  DegreeProgramList: DegreeProgram[];
+  degreeProgramList: DegreeProgram[];
   lectureList: Lecture[];
 
-  degreeLectureCourseforSave: DegreeLectureCourse;
+  // degreeLectureCourseforSave=  new DegreeLectureCourse();
+  course = new Course();
 
   @Input() onSelectedDegreeCourse: DegreeCourse;
   @Input() edit: Boolean = false;
@@ -31,12 +35,13 @@ export class AddCourseComponent implements OnInit {
 
   ngOnInit() {
 
-    // this.getAllDegreeProgram();
-    // this.getAllLectuer();
+    this.getAllDegreeProgram();
+    this.getAllLectuer();
 
     this.courseForm = this.formBuilder.group({
       degreeProgram: ["", Validators.required],
       lecture: ["", Validators.required],
+      courseCode: ["", Validators.required],
       name: ["", Validators.required],
     });
 
@@ -50,7 +55,40 @@ export class AddCourseComponent implements OnInit {
   //   }
 
   // }
+  getAllDegreeProgram(){
+    this.degreeProgramService.getAllDegreeprogram().subscribe(data =>{
+      this.degreeProgramList = data;
 
+    },err =>{
+      console.log(err);
+    })
+  }
+
+  getAllLectuer(){
+    this.LectureSercise.getAllLectures().subscribe(data =>{
+      this.lectureList = data;
+    }, err =>{
+      console.log(err);
+    })
+  }
+
+  saveCourse(){
+
+    console.log("course form Data", this.courseForm.get('degreeProgram').value);    
+    let degreeId  = this.courseForm.get('degreeProgram').value.id;
+    let lectureId  = this.courseForm.get('lecture').value.id;    
+    this.course.courseCode = this.courseForm.get('courseCode').value;
+    this.course.name = this.courseForm.get('name').value;
+    this.course.edit = false;
+
+        this.courseService.addCourse(this.course,degreeId,lectureId).subscribe(data =>{
+
+        },err=>{
+          console.log(err);
+        }
+        );
+
+  }
   // getAllDepartment() {
 
   //   this.departmentService.getAllDepartments().subscribe(data => {

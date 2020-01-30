@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Course } from './../model/Course';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject, Observable } from 'rxjs';
@@ -21,12 +21,14 @@ export class CourseService {
     return this.http.get<any>("http://localhost:8080/course/findAllcourse/");
   }
 
-  addCourse(degreeLectureCourse: DegreeLectureCourse) {
+  addCourse(course : Course, degreeId: string, lectureId: string) {
     //const headers = new HttpHeaders({ "Access-Control-Allow-Origin": "*" });
+    let parameters = new HttpParams();
+    parameters = parameters.set('degreeProgramId', degreeId).set('lecturId',lectureId)
 
-    return this.http.post<any>("http://localhost:8080/course/addCourse/",degreeLectureCourse );
+    return this.http.post<any>("http://localhost:8080/course/addCourse/",course,{params:parameters} );
   }
-  
+
    deleteCourse(courseId: string) {
     //const headers = new HttpHeaders({ "Access-Control-Allow-Origin": "*" });    
     return this.http.post<any>("http://localhost:8080/course/deleteCourse/"+ courseId,{});

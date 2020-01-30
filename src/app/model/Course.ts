@@ -4,5 +4,6 @@ export class Course {
     ai: number;
     courseCode: string;
     name: string;
+    edit: Boolean;
 
 }
