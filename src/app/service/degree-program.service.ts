@@ -22,6 +22,10 @@ export class DegreeProgramService {
     return this.http.get<any>("http://localhost:8080/degreeProgram/findAllDegreeProgram/");
   }
 
+  getDegreeByDepartmentId(depId: string){
+    return this.http.get<any>("http://localhost:8080/degreeProgram/findAllDegreeProgramByDepId/"+depId);
+  }
+
   addDegreeProgram(degreeProgram: DegreeProgram) {
     //const headers = new HttpHeaders({ "Access-Control-Allow-Origin": "*" });
 

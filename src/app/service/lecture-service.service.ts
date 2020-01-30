@@ -21,6 +21,11 @@ export class LectureServiceService {
 
     return this.http.get<any>("http://localhost:8080/Lecture/findAllLecture/");
   }
+  getAllLecturesByDepId(depId: string) {
+    //const headers = new HttpHeaders({ "Access-Control-Allow-Origin": "*" });
+
+    return this.http.get<any>("http://localhost:8080/Lecture/findAllLectureByDepId/"+ depId);
+  }
 
   addLecture(lecture: Lecture) {
     //const headers = new HttpHeaders({ "Access-Control-Allow-Origin": "*" });

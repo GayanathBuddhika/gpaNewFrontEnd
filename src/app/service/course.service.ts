@@ -2,7 +2,8 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Course } from './../model/Course';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject, Observable } from 'rxjs';
-import { DegreeLectureCourse } from 'app/model/DegreeLectureCourse';
+import { DegreeCourse } from 'app/model/DegreeCourse';
+
 
 @Injectable({
   providedIn: 'root'
@@ -11,14 +12,19 @@ export class CourseService {
   private _ngxModal_add = new BehaviorSubject<boolean>(false);
   private _ngxModal_edit = new BehaviorSubject<boolean>(false);
 
-  public _addCourseToList = new Subject<Course>();
-  public _editCourseToList = new Subject<Course>();
+  public _addCourseToList = new Subject<DegreeCourse>();
+  public _editCourseToList = new Subject<DegreeCourse>();
   constructor(private http: HttpClient) { }
 
   getAllCourse() {
     //const headers = new HttpHeaders({ "Access-Control-Allow-Origin": "*" });
 
     return this.http.get<any>("http://localhost:8080/course/findAllcourse/");
+  }
+  getAllDepCourse(depId: string) {
+    //const headers = new HttpHeaders({ "Access-Control-Allow-Origin": "*" });
+
+    return this.http.get<any>("http://localhost:8080/course/findAllDepCourseByDepId/"+ depId);
   }
 
   addCourse(course : Course, degreeId: string, lectureId: string) {
@@ -29,9 +35,9 @@ export class CourseService {
     return this.http.post<any>("http://localhost:8080/course/addCourse/",course,{params:parameters} );
   }
 
-   deleteCourse(courseId: string) {
+   deleteCourse(degreeCourseId: string) {
     //const headers = new HttpHeaders({ "Access-Control-Allow-Origin": "*" });    
-    return this.http.post<any>("http://localhost:8080/course/deleteCourse/"+ courseId,{});
+    return this.http.post<any>("http://localhost:8080/course/deleteDegreeCourse/"+ degreeCourseId,{});
   }
 
   _set_ngxModal_add(value: boolean) {
