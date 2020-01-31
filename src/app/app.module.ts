@@ -11,6 +11,7 @@ import { PageNotFoundComponent } from "./page-not-found/page-not-found.component
 import { HeaderComponent } from "./shared/header/header.component";
 import { NavigationComponent } from "./shared/navigation/navigation.component";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { StudentCourseComponent } from './component/student-course/student-course.component';
 
 
 
@@ -27,6 +28,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     HeaderComponent,
     LeftNavTemplateComponent,
     NavigationComponent,
+    
    
    
    

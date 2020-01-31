@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Student } from 'app/model/Student';
 import { BehaviorSubject, Subject, Observable } from 'rxjs';
@@ -15,10 +15,22 @@ export class StudentService {
   constructor(private http: HttpClient) { }
 
 
-   getAllStudent() {
+   getAllStudentByDepId(depId: string) {
+    //const headers = new HttpHeaders({ "Access-Control-Allow-Origin": "*" });
+
+    return this.http.get<any>("http://localhost:8080/student/findAllstudentByDepId/"+ depId);
+  }
+  getAllStudent() {
     //const headers = new HttpHeaders({ "Access-Control-Allow-Origin": "*" });
 
     return this.http.get<any>("http://localhost:8080/student/findAllstudent/");
+  }
+
+  addStudentCourse(studentList: Student[], courseId: string){
+    let parameters = new HttpParams();
+    parameters = parameters.set('courseId', courseId);
+    
+    return this.http.post<any>("http://localhost:8080/student/assingStudentToCourse/",studentList,{params: parameters});
   }
 
   addStudent(studednt: Student){

@@ -1,3 +1,4 @@
+import { StudentCourseComponent } from './../student-course/student-course.component';
 import { CourseListComponent } from './../course/course-list/course-list.component';
 import { AddCourseComponent } from './../course/add-course/add-course.component';
 import { CourseComponent } from './../course/course.component';
@@ -15,6 +16,7 @@ import { StudentAddComponent } from './../student/student-add/student-add.compon
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+
 import { FacultyComponent } from '../faculty/faculty.component';
 import { MainComponentRoutingModule } from '../main-component-routing/main-component-routing.module';
 import { MainResultComponent } from '../result/main-result/main-result.component';
@@ -22,6 +24,7 @@ import { AddFacultyComponent } from '../faculty/addFaculty/add-faculty/add-facul
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { DropdownModule } from 'primeng/dropdown';
 import { TableModule } from 'primeng/table';
+import {PickListModule} from 'primeng/picklist';
 import { ModalModule } from 'ngx-bootstrap';
 import { LectureComponent } from '../lecture/lecture.component';
 import { AddLectureComponent } from '../lecture/add-lecture/add-lecture.component';
@@ -53,6 +56,7 @@ import { LectureListComponent } from '../lecture/lecture-list/lecture-list.compo
     CourseComponent,
     AddCourseComponent,
     CourseListComponent,
+    StudentCourseComponent
 
 
 
@@ -64,6 +68,7 @@ import { LectureListComponent } from '../lecture/lecture-list/lecture-list.compo
     ReactiveFormsModule,
     FormsModule,
     TableModule,
+    PickListModule,
     DropdownModule,
     ModalModule.forRoot(),
 
