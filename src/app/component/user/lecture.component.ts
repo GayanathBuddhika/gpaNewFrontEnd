@@ -1,4 +1,5 @@
-import { LectureServiceService } from './../../service/lecture-service.service';
+import { UserService } from './../../service/user.service';
+
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 
@@ -11,14 +12,14 @@ export class LectureComponent implements OnInit {
   modalRef: BsModalRef
   constructor(
     private modalService: BsModalService,
-    private lectureService: LectureServiceService
+    private userService : UserService
   ) { }
 
   ngOnInit() {
-    this.lectureService.get_ngxModal_add_$().subscribe(data => {
+    this.userService.get_ngxModal_add_$().subscribe(data => {
       if (data) {
         this.modalRef.hide();
-        this.lectureService._set_ngxModal_add(false)
+        this.userService._set_ngxModal_add(false)
       }
 
     })

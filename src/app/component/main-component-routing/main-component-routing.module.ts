@@ -9,7 +9,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { FacultyComponent } from '../faculty/faculty.component';
 import { MainResultComponent } from '../result/main-result/main-result.component';
 import { DepartmentComponent } from '../department/department.component';
-import { LectureComponent } from '../lecture/lecture.component';
+import { LectureComponent } from '../user/lecture.component';
 const routes: Routes = [
   // {
   //   path: '',
@@ -56,7 +56,7 @@ const routes: Routes = [
     // pathMatch: 'full',
     component: StudentComponent,
     data: {
-      title: 'Department'
+      title: 'Student'
     }
   },
   {
@@ -64,15 +64,15 @@ const routes: Routes = [
     // pathMatch: 'full',
     component: DegreeProgramComponent,
     data: {
-      title: 'Department'
+      title: 'Degreeprogram'
     }
   },
   {
-    path: 'lecture',
+    path: 'user',
     // pathMatch: 'full',
     component: LectureComponent,
     data: {
-      title: 'Department'
+      title: 'User'
     }
   },
   {
@@ -80,7 +80,7 @@ const routes: Routes = [
     // pathMatch: 'full',
     component: CourseComponent,
     data: {
-      title: 'Department'
+      title: 'Course'
     }
   },
   {

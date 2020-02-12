@@ -32,6 +32,8 @@ export class StudentAddComponent implements OnInit {
       studentName:["", Validators.required],
       degreeProYear:["", Validators.required],
       department: ["", Validators.required],
+      email: ["", Validators.required],
+      phoneNumber: ["", Validators.required],
      
     });
 
@@ -45,6 +47,8 @@ export class StudentAddComponent implements OnInit {
         this.studentForm.get('studentName').patchValue(this.selectedStudednt.studentName);
         this.studentForm.get('degreeProYear').patchValue(this.selectedStudednt.degreeProYear);
         this.studentForm.get('department').patchValue(this.selectedStudednt.department);
+        this.studentForm.get('email').patchValue(this.selectedStudednt.email);
+        this.studentForm.get('phoneNumber').patchValue(this.selectedStudednt.phoneNumber);
   
       }
     }

@@ -1,3 +1,4 @@
+import { User } from './User';
 import { Lecture } from './Lecture';
 import { Course } from './Course';
 import { DegreeProgram } from './DegreeProgram';
@@ -6,5 +7,5 @@ export class DegreeCourse{
     ai: string;
     degreeProgram: DegreeProgram;
     course: Course;
-    lecture: Lecture;
+    user: User;
 }

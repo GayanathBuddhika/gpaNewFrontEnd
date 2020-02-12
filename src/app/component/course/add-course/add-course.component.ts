@@ -1,5 +1,7 @@
+import { User } from './../../../model/User';
+import { UserService } from './../../../service/user.service';
 
-import { LectureServiceService } from './../../../service/lecture-service.service';
+
 import { DegreeProgramService } from 'app/service/degree-program.service';
 import { CourseService } from './../../../service/course.service';
 import { Lecture } from './../../../model/Lecture';
@@ -17,7 +19,7 @@ import { Course } from 'app/model/Course';
 export class AddCourseComponent implements OnInit {
   courseForm: FormGroup;
   degreeProgramList: DegreeProgram[];
-  lectureList: Lecture[];
+  lectureList: User[];
   course = new Course();
 
   @Input() onSelectedDegreeCourse: DegreeCourse;
@@ -26,7 +28,8 @@ export class AddCourseComponent implements OnInit {
     private formBuilder: FormBuilder,
     private courseService: CourseService,
     private degreeProgramService: DegreeProgramService,
-    private LectureSercise: LectureServiceService
+    private userService: UserService
+  
   ) { }
 
   ngOnInit() {
@@ -36,7 +39,7 @@ export class AddCourseComponent implements OnInit {
 
     this.courseForm = this.formBuilder.group({
       degreeProgram: ["", Validators.required],
-      lecture: ["", Validators.required],
+      user: ["", Validators.required],
       courseCode: ["", Validators.required],
       name: ["", Validators.required],
     });
@@ -45,7 +48,7 @@ export class AddCourseComponent implements OnInit {
   ngAfterViewInit() {
     if (this.edit) {
       this.courseForm.get('degreeProgram').patchValue(this.onSelectedDegreeCourse.degreeProgram);
-      this.courseForm.get('lecture').patchValue(this.onSelectedDegreeCourse.lecture);
+      this.courseForm.get('user').patchValue(this.onSelectedDegreeCourse.user);
       this.courseForm.get('courseCode').patchValue(this.onSelectedDegreeCourse.course.courseCode);
       this.courseForm.get('name').patchValue(this.onSelectedDegreeCourse.course.name);
 
@@ -63,7 +66,9 @@ export class AddCourseComponent implements OnInit {
   }
 
   getAllLectuerByDepId() {
-    this.LectureSercise.getAllLecturesByDepId("10").subscribe(data => {
+    this.userService.getAllLecturesByDepId("10").subscribe(data => {
+
+      console.log("lecture 33333333333",data);
       this.lectureList = data;
     }, err => {
       console.log(err);
@@ -74,7 +79,7 @@ export class AddCourseComponent implements OnInit {
 
     console.log("course form Data", this.courseForm.get('degreeProgram').value);
     let degreeId = this.courseForm.get('degreeProgram').value.id;
-    let lectureId = this.courseForm.get('lecture').value.id;
+    let lectureId = this.courseForm.get('user').value.id;
     this.course.courseCode = this.courseForm.get('courseCode').value;
     this.course.name = this.courseForm.get('name').value;
     this.course.edit = false;
@@ -94,11 +99,11 @@ export class AddCourseComponent implements OnInit {
       } else {
         //--- set saved degreeProgram data to the addDegreeProgram, if data properly saved 
         if (data.action === "saved") {
-          this.courseService._addCourseToList.next(data.course);
+          
           this.courseService._set_ngxModal_add(true);
+          this.courseService._addCourseToList.next(data.course);
         }
       }
-      console.log(data);
     }, err => {
       console.log(err);
     }

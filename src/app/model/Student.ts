@@ -9,5 +9,7 @@ export class Student{
     studentName: string;
     degreeProYear: number;
     department: Department;
+    email: string;
+    phoneNumber: string;
     edit: Boolean;
 }

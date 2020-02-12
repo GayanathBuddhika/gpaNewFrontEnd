@@ -26,9 +26,9 @@ import { DropdownModule } from 'primeng/dropdown';
 import { TableModule } from 'primeng/table';
 import {PickListModule} from 'primeng/picklist';
 import { ModalModule } from 'ngx-bootstrap';
-import { LectureComponent } from '../lecture/lecture.component';
-import { AddLectureComponent } from '../lecture/add-lecture/add-lecture.component';
-import { LectureListComponent } from '../lecture/lecture-list/lecture-list.component';
+import { LectureComponent } from '../user/lecture.component';
+import { AddLectureComponent } from '../user/add-user/add-lecture.component';
+import { LectureListComponent } from '../user/user-list/lecture-list.component';
 
 
 

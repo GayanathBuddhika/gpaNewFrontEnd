@@ -1,10 +1,14 @@
+import { Faculty } from './Faculty';
+import { Department } from './Department';
 
 export class User{
     id: string;
-    ai: string;
-    userId: string;
-    role: string;
-    userType: string;
-    firstName: string;
-    lastName: string;
+    ai: string;   
+    email: string;
+    role: string;   
+    name: string;  
+    phoneNumber: string;
+    department: Department;
+    faculty: Faculty;
+    edit: Boolean;
 }

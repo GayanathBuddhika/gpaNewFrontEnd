@@ -22,8 +22,7 @@ export class CourseListComponent implements OnInit {
 
     this.headers =
     [
-      { field: 'no', header: 'No' },
-      { field: 'name', header: 'Name' },
+      { field: 'no', header: 'No' },  
       { field: 'courseCode', header: 'Course Code' },
       { field: 'courseName', header: 'Course Name' },
       { field: 'department', header: 'Department' },
