@@ -1,3 +1,4 @@
+import { ResultComponent } from './../result/result.component';
 import { StudentCourseComponent } from './../student-course/student-course.component';
 import { CourseComponent } from './../course/course.component';
 import { DegreeProgramComponent } from './../degree-program/degree-program.component';
@@ -90,7 +91,16 @@ const routes: Routes = [
     data: {
       title: 'Department'
     }
+  },
+  {
+    path: 'addresult',
+    // pathMatch: 'full',
+    component: ResultComponent,
+    data: {
+      title: 'Result'
+    }
   }
+
 
 
 

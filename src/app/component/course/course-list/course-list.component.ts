@@ -12,25 +12,25 @@ export class CourseListComponent implements OnInit {
   modalRefOfCourseList: BsModalRef;
   headers: any[];
   degreeCourseList: DegreeCourse[] = [];
-   onSelectedDegreeCourse: DegreeCourse;
-  constructor(private courseService : CourseService,
+  onSelectedDegreeCourse: DegreeCourse;
+  constructor(private courseService: CourseService,
     private modalService: BsModalService) { }
-  
+
   ngOnInit() {
 
     this.getAllDepCourseByDepId();
 
     this.headers =
-    [
-      { field: 'no', header: 'No' },  
-      { field: 'courseCode', header: 'Course Code' },
-      { field: 'courseName', header: 'Course Name' },
-      { field: 'department', header: 'Department' },
-      { field: 'lecture', header: 'Lecture Name' },
-      { field: 'edit', header: 'Edit' },
-      { field: 'delete', header: 'Delete' }
+      [
+        { field: 'no', header: 'No' },
+        { field: 'courseCode', header: 'Course Code' },
+        { field: 'courseName', header: 'Course Name' },
+        { field: 'degree Program ', header: 'Degree Program' },
+        { field: 'lecture', header: 'Lecture Name' },
+        { field: 'edit', header: 'Edit' },
+        { field: 'delete', header: 'Delete' }
 
-    ];
+      ];
 
     this.courseService.get_ngxModal_edit_$().subscribe(data => {
       if (data) {
@@ -43,7 +43,7 @@ export class CourseListComponent implements OnInit {
       let courseList = [...this.degreeCourseList];
       courseList.unshift(data);
       this.degreeCourseList = courseList;
-      console.log("*********",this.degreeCourseList);
+      console.log("*********", this.degreeCourseList);
     })
 
     this.courseService._editCourseToList.subscribe(data => {
@@ -52,23 +52,23 @@ export class CourseListComponent implements OnInit {
     })
   }
 
-  getAllDepCourseByDepId(){
-   this.courseService.getAllDepCourse("10").subscribe(data =>{
-   this.degreeCourseList = data;
-     console.log("dep Course", data);
-   },err =>{
-     console.log(err);
-   });
+  getAllDepCourseByDepId() {
+    this.courseService.getAllDepCourse("10").subscribe(data => {
+      this.degreeCourseList = data;
+      console.log("dep Course", data);
+    }, err => {
+      console.log(err);
+    });
   }
 
   update(degreeCourse: DegreeCourse, template: TemplateRef<any>) {
-    console.log("update  ",degreeCourse);
+    console.log("update  ", degreeCourse);
     this.onSelectedDegreeCourse = degreeCourse;
     this.openModal(template);
   }
 
   delete(degreeCourse: DegreeCourse) {
-    this.courseService.deleteCourse(degreeCourse.id).subscribe(data => {
+    this.courseService.deleteCourse(degreeCourse, degreeCourse.id, degreeCourse.course.id).subscribe(data => {
       let index = this.degreeCourseList.indexOf(degreeCourse);
       // let index = this.departmentList.indexOf();
       // this.facultyList.splice(index, 0);

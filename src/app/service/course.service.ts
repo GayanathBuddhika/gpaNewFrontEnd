@@ -1,8 +1,9 @@
+import { DegreeCourse } from './../model/DegreeCourse';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Course } from './../model/Course';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject, Observable } from 'rxjs';
-import { DegreeCourse } from 'app/model/DegreeCourse';
+
 
 
 @Injectable({
@@ -24,20 +25,23 @@ export class CourseService {
   getAllDepCourse(depId: string) {
     //const headers = new HttpHeaders({ "Access-Control-Allow-Origin": "*" });
 
-    return this.http.get<any>("http://localhost:8080/course/findAllDepCourseByDepId/"+ depId);
+    return this.http.get<any>("http://localhost:8080/course/findAllDepCourseByDepId/" + depId);
   }
 
-  addCourse(course : Course, degreeId: string, lectureId: string) {
+  addCourse(course: Course, degreeId: string, lectureId: string) {
     //const headers = new HttpHeaders({ "Access-Control-Allow-Origin": "*" });
     let parameters = new HttpParams();
-    parameters = parameters.set('degreeProgramId', degreeId).set('lecturId',lectureId)
+    parameters = parameters.set('degreeProgramId', degreeId).set('lecturId', lectureId)
 
-    return this.http.post<any>("http://localhost:8080/course/addCourse/",course,{params:parameters} );
+    return this.http.post<any>("http://localhost:8080/course/addCourse/", course, { params: parameters });
   }
 
-   deleteCourse(degreeCourseId: string) {
+  deleteCourse(degreeCourse: DegreeCourse, degreeCourseId: string, courseId: string) {
+    let parameters = new HttpParams();
+    parameters = parameters.set('degreeCourseId', degreeCourseId).set('courseId', courseId);
+    console.log("degree pro id", parameters.toString())
     //const headers = new HttpHeaders({ "Access-Control-Allow-Origin": "*" });    
-    return this.http.post<any>("http://localhost:8080/course/deleteDegreeCourse/"+ degreeCourseId,{});
+    return this.http.delete<any>("http://localhost:8080/course/deleteDegreeCourse",{ params: parameters });
   }
 
   _set_ngxModal_add(value: boolean) {

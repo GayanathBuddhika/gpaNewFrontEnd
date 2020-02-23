@@ -15,8 +15,8 @@ export class StudentCourseComponent implements OnInit {
   sourseStudent: Student[];
   targetStudent: Student[];
  // studentList: Student[];
-  courseList: Course[];
-   selectedCourse: DegreeCourse;
+  courseList: DegreeCourse[];
+   selectedDegreeCourse: DegreeCourse;
 
   constructor(
     private courseService : CourseService,
@@ -49,12 +49,12 @@ export class StudentCourseComponent implements OnInit {
     
   }
 
-  onChange(course: DegreeCourse){
-    console.log("course 3333333", course);
-    this.selectedCourse = course;
+  onChange(degreeCourse: DegreeCourse){
+    console.log("course 3333333", degreeCourse);
+    this.selectedDegreeCourse = degreeCourse;
   }
   assingStudent(){
-    this.studentService.addStudentCourse(this.targetStudent,this.selectedCourse.course.id).subscribe(data =>{
+    this.studentService.addStudentCourse(this.targetStudent,this.selectedDegreeCourse.course.id).subscribe(data =>{
       console.log("****************",data);
     },err =>{
       console.log(err);

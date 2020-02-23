@@ -1,3 +1,6 @@
+import { ListResultComponent } from './../result/list-result/list-result.component';
+import { AddResultComponent } from './../result/add-result/add-result.component';
+import { ResultComponent } from './../result/result.component';
 import { StudentCourseComponent } from './../student-course/student-course.component';
 import { CourseListComponent } from './../course/course-list/course-list.component';
 import { AddCourseComponent } from './../course/add-course/add-course.component';
@@ -56,7 +59,10 @@ import { LectureListComponent } from '../user/user-list/lecture-list.component';
     CourseComponent,
     AddCourseComponent,
     CourseListComponent,
-    StudentCourseComponent
+    StudentCourseComponent,
+    ResultComponent,
+    AddResultComponent,
+    ListResultComponent,
 
 
 
