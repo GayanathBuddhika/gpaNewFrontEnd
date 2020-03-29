@@ -1,3 +1,91 @@
-<p>
-  add-result works!
-</p>
+<form  [formGroup]="resultForm" (ngSubmit)="saveUser()">
+  
+  <!-- for department list --> 
+  <div class="row">
+    <div class="form-group">
+      <label class="control-label">Select a batch</label><span style="color: red">*</span>
+      <p-dropdown formControlName="batch"  [options]="batchs" [filter]="true" placeholder="Select a batch" [style]="{'width':'100%'}"></p-dropdown>
+    
+    </div>
+  </div> 
+  <!-- for faclulty List -->
+  <div class="row">
+    <div class="form-group">
+      <label class="control-label">Select a subject</label><span style="color: red">*</span>
+      <p-dropdown formControlName="degreeCourse" [options]="degreeCourse" [filter]="true" optionLabel="course.name" (onChange) ="findSutudent()" placeholder="Select a subject" [style]="{'width':'100%'}"></p-dropdown>
+     
+  </div>
+  </div>
+
+  </form>
+
+  <!-- table -->
+<!-- 
+  <p-table #dt [columns]="headers" [value]="studentCourseList" [paginator]="true" [rows]="10" [responsive]="true"
+[resizableColumns]="true" [columnResizeMode]="'expand'" [autoLayout]="true" [rowsPerPageOptions]="[10,25,50,100]">
+
+<ng-template pTemplate="header" let-headers> -->
+  <!-- this is for table headers -->
+  <!-- <tr>
+    <th *ngFor="let th of headers">
+      {{th.header}}
+
+    </th>
+  </tr>
+   -->
+
+<!-- </ng-template> -->
+<!-- this is for table body -->
+<!-- <ng-template pTemplate="body" let-studentCourse let-rowIndex="rowIndex">
+  <tr>
+    <td>{{ rowIndex+1}}</td>
+    <td>{{ studentCourse.student.epNumber}}</td>
+    <td>{{ studentCourse.student.studentName}}</td>
+    <td> 
+      <p-dropdown [options]="resultMarks" [filter]="true" placeholder="Select a Mark" [style]="{'width':'100%'}"></p-dropdown>
+    </td>
+    
+   
+
+
+  </tr>
+  
+</ng-template>
+
+<ng-template pTemplate="emptymessage" let-headers>
+        <tr>
+            <td [attr.colspan]="headers.length">
+                <p class="text-center"><b>No records found</b></p>
+            </td>
+        </tr>
+    </ng-template>
+
+</p-table> -->
+<form [formGroup]="resultForm2" *ngIf="viewTable">
+  <table formArrayName="data">
+      <thead> 
+          <tr>
+            <th >No</th>
+            <th >EP Number</th>
+            <th >Name</th>
+            <th >Marks</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of studentCourseList ; let i=index"
+            [formGroupName]="i" >
+              <td>{{i+1}}</td>
+              <td><input type='text' formControlName="epNumber" disabled></td>
+              <td><input type='text' formControlName="name" disabled></td>
+              <td>        
+                <p-dropdown [options]="resultMarks" formControlName="mark" [filter]="true" placeholder="Select a Mark" [style]="{'width':'100%'}"></p-dropdown>
+              </td>
+          </tr>
+        </tbody>
+  </table>
+
+  <button (click)="submit()" [disabled]="!resultForm2.valid">Submit</button>
+
+</form>
+
+
