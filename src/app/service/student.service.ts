@@ -26,9 +26,9 @@ export class StudentService {
     return this.http.get<any>("http://localhost:8080/student/findAllstudent/");
   }
 
-  addStudentCourse(studentList: Student[], courseId: string){
+  addStudentCourse(studentList: Student[], degreeCourseId: string){
     let parameters = new HttpParams();
-    parameters = parameters.set('courseId', courseId);
+    parameters = parameters.set('degreeCourseId', degreeCourseId);
     
     return this.http.post<any>("http://localhost:8080/student/assingStudentToCourse/",studentList,{params: parameters});
   }

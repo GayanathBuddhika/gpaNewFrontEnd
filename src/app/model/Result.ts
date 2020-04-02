@@ -5,8 +5,11 @@ export class Result {
     id: string;
     ai: string;
     result: string;
-    examDate: string;
+    examName: string;
     studentCourse: StudentCourse;
+    depHedApproval: boolean;
+	lecApproval: boolean;
+    deenApproval: boolean;
     edit: boolean;
 
 }

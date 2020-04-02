@@ -54,7 +54,7 @@ export class StudentCourseComponent implements OnInit {
     this.selectedDegreeCourse = degreeCourse;
   }
   assingStudent(){
-    this.studentService.addStudentCourse(this.targetStudent,this.selectedDegreeCourse.course.id).subscribe(data =>{
+    this.studentService.addStudentCourse(this.targetStudent,this.selectedDegreeCourse.id).subscribe(data =>{
       console.log("****************",data);
     },err =>{
       console.log(err);

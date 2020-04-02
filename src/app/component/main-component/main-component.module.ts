@@ -1,3 +1,4 @@
+import { ViewResultComponent } from './../result/view-result/view-result.component';
 import { ListResultComponent } from './../result/list-result/list-result.component';
 import { AddResultComponent } from './../result/add-result/add-result.component';
 import { ResultComponent } from './../result/result.component';
@@ -63,6 +64,7 @@ import { LectureListComponent } from '../user/user-list/lecture-list.component';
     ResultComponent,
     AddResultComponent,
     ListResultComponent,
+    ViewResultComponent,
 
 
 
