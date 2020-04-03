@@ -1,78 +1,98 @@
-<h2>aall subject</h2>
-<table>
-    <tr>
-        <th>subject code</th>
-        <th>subject</th>
-        <th>result</th>
-        
-    </tr>
-    <tr *ngFor="let result of results">
-        <th>{{result.course.courseCode}}</th>
-        <th>{{result.course.name}}</th>
-        <th>{{result.result}}</th>
-    </tr>
-</table>
+<div class="" id="page-wrapper">
+    <div class="container-fluid">
+      <div class="row row-stat">
+        <div class="col-sm-12">
+          <div class="panel panel-default">
+            
+                <div>
+                    <h1>final GPA : {{finalGpa}}</h1>
+                     <h3> first year GPA : {{gpa1Year}}</h3>
+                     <h3> second year GPA : {{gpa2Year}}</h3>
+                     <h3> thred year GPA : {{gpa3Year}}</h3>
+                     <h3> forth year GPA : {{gpa4Year}}</h3>
+                </div>
 
-<hr>
-<h2>first year subject</h2>
-<table>
-    <tr>
-        <th>subject code</th>
-        <th>subject</th>
-        <th>result</th>
-        
-    </tr>
-    <tr *ngFor="let result1 of firstYearResults">
-        <th>{{result1.course.courseCode}}</th>
-        <th>{{result1.course.name}}</th>
-        <th>{{result1.result}}</th>
-    </tr>
-</table>
+                <hr>
+                <h2>first year subject</h2>
+                <table class="table">
+                    <tr>
+                        <th>subject code</th>
+                        <th>subject</th>
+                        <th>result</th>
+                        
+                    </tr>
+                  
+                    <tr *ngFor="let result1 of firstYearResults; let i = index" [style.background]="firstYearResults[i].result == 'E'?'#ff9999':firstYearResults[i].result == 'D+'?'#ffcccc':firstYearResults[i].result == 'D'?'#ffcccc':firstYearResults[i].result == 'ABC'?'#ffe680':''">
+                        <th>{{result1.studentCourse.degreeCourse.course.courseCode}}</th>
+                        <th>{{result1.studentCourse.degreeCourse.course.name}}</th>
+                        <th>{{result1.result}}</th>
+                    </tr>
+                    <tr *ngIf="!firstYearResults.length">
+                        <p class="text-center"><b>No records found</b></p>                       
+                    </tr>
+                </table>
 
-<hr>
-<h2>second year  subject</h2>
-<table>
-    <tr>
-        <th>subject code</th>
-        <th>subject</th>
-        <th>result</th>
-        
-    </tr>
-    <tr *ngFor="let result2 of secondYearResults">
-        <th>{{result2.course.courseCode}}</th>
-        <th>{{result2.course.name}}</th>
-        <th>{{result2.result}}</th>
-    </tr>
-</table>
+                <hr>
+                <h2>second year  subject</h2>
+                <table class="table">
+                    <tr>
+                        <th>subject code</th>
+                        <th>subject</th>
+                        <th>result</th>
+                        
+                    </tr>
+                    <tr *ngFor="let result2 of secondYearResults; let i = index" [style.background]="secondYearResults[i].result == 'E'?'#ff9999':secondYearResults[i].result == 'D+'?'#ffcccc':secondYearResults[i].result == 'D'?'#ffcccc':secondYearResults[i].result == 'ABC'?'#ffe680':''">
+                        <th>{{result2.studentCourse.degreeCourse.course.courseCode}}</th>
+                        <th>{{result2.studentCourse.degreeCourse.course.name}}</th>
+                        <th>{{result2.result}}</th>
+                    </tr>
+                    <tr *ngIf="!secondYearResults.length">
+                        <p class="text-center"><b>No records found</b></p>                       
+                    </tr>
+                </table>
 
-<hr>
-<h2>therd year subject</h2>
-<table>
-    <tr>
-        <th>subject code</th>
-        <th>subject</th>
-        <th>result</th>
-        
-    </tr>
-    <tr *ngFor="let result3 of thredYearResults">
-        <th>{{result3.course.courseCode}}</th>
-        <th>{{result3.course.name}}</th>
-        <th>{{result3.result}}</th>
-    </tr>
-</table>
+                <hr>
+                <h2>therd year subject</h2>
+                <table class="table">
+                    <tr>
+                        <th>subject code</th>
+                        <th>subject</th>
+                        <th>result</th>
+                        
+                    </tr>
+                    <tr *ngFor="let result3 of thredYearResults; let i = index" [style.background]="thredYearResults[i].result == 'E'?'#ff9999':thredYearResults[i].result == 'D+'?'#ffcccc':thredYearResults[i].result == 'D'?'#ffcccc':thredYearResults[i].result == 'ABC'?'#ffe680':''">
+                        <th>{{result3.studentCourse.degreeCourse.course.courseCode}}</th>
+                        <th>{{result3.studentCourse.degreeCourse.course.name}}</th>
+                        <th>{{result3.result}}</th>
+                    </tr>
+                    <tr *ngIf="!thredYearResults.length">
+                        <p class="text-center"><b>No records found</b></p>
+                       
+                    </tr>
+                </table>
 
-<hr>
-<h2>forth year  subject</h2>
-<table>
-    <tr>
-        <th>subject code</th>
-        <th>subject</th>
-        <th>result</th>
-        
-    </tr>
-    <tr *ngFor="let result4 of forthtYearResults">
-        <th>{{result4.course.courseCode}}</th>
-        <th>{{result4.course.name}}</th>
-        <th>{{result4.result}}</th>
-    </tr>
-</table>
+                <hr>
+                <h2>forth year  subject</h2>
+                <table class="table">
+                    <tr>
+                        <th>subject code</th>
+                        <th>subject</th>
+                        <th>result</th>
+                        
+                    </tr>
+                    <tr *ngFor="let result4 of forthtYearResults; let i = index" [style.background]="forthtYearResults[i].result == 'E'?'#ff9999':forthtYearResults[i].result == 'D+'?'#ffcccc':forthtYearResults[i].result == 'D'?'#ffcccc':forthtYearResults[i].result == 'ABC'?'#ffe680':''">
+                        <th>{{result4.studentCourse.degreeCourse.course.courseCode}}</th>
+                        <th>{{result4.studentCourse.degreeCourse.course.name}}</th>
+                        <th>{{result4.result}}</th>
+                    </tr>
+                    <tr *ngIf="!forthtYearResults.length">
+                        <p class="text-center"><b>No records found</b></p>
+                       
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+     </div>
+  </div>
+</div>
