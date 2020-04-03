@@ -38,6 +38,10 @@ export class AddResultComponent implements OnInit, AfterViewInit {
     this.getSubjects();
     this.getResultMark();
 
+   
+     
+  
+
     this.resultForm = this.formBuilder.group({
       examName: ["", Validators.required],
       batch: ["", Validators.required],
@@ -73,9 +77,10 @@ export class AddResultComponent implements OnInit, AfterViewInit {
         label: this.selectedResultView.studentCourse.student.batch,
         value: this.selectedResultView.studentCourse.student.batch
       };
-      console.log("************* 66666666666", newbatch);
-      this.resultForm.get('batch').patchValue(newbatch);
-      // *****
+    
+      // console.log("************* 66666666666", this.selectedResultView.studentCourse.student.batch);
+      // this.resultForm.get('batch').patchValue('2014/15');
+    
       console.log("************* 77777777", this.selectedResultView.studentCourse.degreeCourse.course.name);
       this.resultForm.get('degreeCourse').patchValue(this.selectedResultView.studentCourse.degreeCourse);
 
@@ -130,6 +135,8 @@ export class AddResultComponent implements OnInit, AfterViewInit {
 
   createTable(studentCourseList: StudentCourse[]) {
     console.log("11111111111111111111");
+    const re : Result[] = this.selectedResultView.result;
+
     if (studentCourseList) {
       console.log("22222222222222222222222");
       // add form group to form array
@@ -143,6 +150,11 @@ export class AddResultComponent implements OnInit, AfterViewInit {
         console.log("3333333333333333333");
         element.get('epNumber').patchValue(studentCourseList[i].student.epNumber);
         element.get('name').patchValue(studentCourseList[i].student.studentName);
+        if(this.edit){
+          const index = re.findIndex(data => data.studentCourse.id === studentCourseList[i].id )
+          element.get('mark').patchValue(re[index].result);
+        }
+       
       })
       console.log("44444444444444444444");
       this.viewTable = true;

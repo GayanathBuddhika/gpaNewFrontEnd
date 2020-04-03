@@ -62,6 +62,10 @@ export class ResultService {
   {
     label: 'E',
     value: 'E'
+  },
+  {
+    label: 'ABC',
+    value: 'ABC'
   }
   
  ];
