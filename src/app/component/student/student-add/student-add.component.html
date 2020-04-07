@@ -2,8 +2,10 @@
                   
   <!-- for company list --> 
   <div class="row">
-    <div class="form-group">
+    <div class=" col-lg-3 col-md-4 col-sm-12 form-group">
       <label class="control-label">Department</label><span style="color: red">*</span>
+    </div>
+    <div class="col-lg-9 col-md-8 col-sm-12">
       <p-dropdown formControlName="department" #com  [options]="departmentList" [filter]="true" optionLabel="name" placeholder="Select a department" [style]="{'width':'100%'}"></p-dropdown>
       <!-- fro validation -->
     <!-- <app-field-error-display [errorIcon]="false" [displayError]="isFieldValid('company')" errorMsg="Company is required"></app-field-error-display> -->
@@ -12,61 +14,62 @@
 
 
   <div class="row">
-    <div class="form-group">
-    <label class="col-sm-3 control-label" for="form-control-1">Student Name</label>
-    <div class="col-sm-9">
+      <div class=" col-lg-3 col-md-4 col-sm-12 form-group">
+    <label class="control-label" for="form-control-1">Student Name</label>
+      </div>
+      <div class="col-lg-9 col-md-8 col-sm-12">
       <input type="text" class="form-control" formControlName="studentName" placeholder="Enter Student name">
-    </div>
+      </div>
   </div>
-  </div>
+  
 
   <div class="row">
-    <div class="form-group">
-    <label class="col-sm-3 control-label" for="form-control-1">EP Number</label>
-    <div class="col-sm-9">
+      <div class=" col-lg-3 col-md-4 col-sm-12 form-group">
+    <label class="control-label" for="form-control-1">EP Number</label>
+      </div>
+      <div class="col-lg-9 col-md-8 col-sm-12">
       <input type="text" class="form-control" formControlName="epNumber" placeholder="Enter EP Number">
-    </div>
-  </div>
+      </div>
   </div>
   <div class="row">
-    <div class="form-group">
-    <label class="col-sm-3 control-label" for="form-control-1">Registrations Number</label>
-    <div class="col-sm-9">
+      <div class=" col-lg-3 col-md-4 col-sm-12 form-group">
+    <label class="control-label" for="form-control-1">Registrations Number</label>
+      </div>
+      <div class="col-lg-9 col-md-8 col-sm-12">
       <input type="text" class="form-control" formControlName="registrationNumber" placeholder="Enter Registrations Number">
-    </div>
-  </div>
+      </div>
   </div>
   <div class="row">
-    <div class="form-group">
-    <label class="col-sm-3 control-label" for="form-control-1">Batch</label>
-    <div class="col-sm-9">
+      <div class=" col-lg-3 col-md-4 col-sm-12 form-group">
+    <label class=" control-label" for="form-control-1">Batch</label>
+      </div>
+      <div class="col-lg-9 col-md-8 col-sm-12">
       <input type="text" class="form-control" formControlName="batch" placeholder="Enter batch">
-    </div>
-  </div>
+      </div>
   </div>
   <div class="row">
-    <div class="form-group">
-    <label class="col-sm-3 control-label" for="form-control-1">Degree_pro Year</label>
-    <div class="col-sm-9">
+      <div class=" col-lg-3 col-md-4 col-sm-12 form-group">
+    <label class=" control-label" for="form-control-1">Degree_pro Year</label>
+      </div>
+      <div class="col-lg-9 col-md-8 col-sm-12">
       <input type="text" class="form-control" formControlName="degreeProYear" placeholder="Enter name">
-    </div>
-  </div>
+      </div>
   </div>
   <div class="row">
-    <div class="form-group">
-    <label class="col-sm-3 control-label" for="form-control-1">Email</label>
-    <div class="col-sm-9">
+      <div class=" col-lg-3 col-md-4 col-sm-12 form-group">
+    <label class=" control-label" for="form-control-1">Email</label>
+      </div>
+      <div class="col-lg-9 col-md-8 col-sm-12">
       <input type="text" class="form-control" formControlName="email" placeholder="Enter Emaill">
-    </div>
-  </div>
+      </div>
   </div>
   <div class="row">
-    <div class="form-group">
-    <label class="col-sm-3 control-label" for="form-control-1">Phone Numer</label>
-    <div class="col-sm-9">
+      <div class=" col-lg-3 col-md-4 col-sm-12 form-group">
+    <label class=" control-label" for="form-control-1">Phone Numer</label>
+      </div>
+      <div class="col-lg-9 col-md-8 col-sm-12">
       <input type="text" class="form-control" formControlName="phoneNumber" placeholder="Enter PhoneNumber">
-    </div>
-  </div>
+      </div>
   </div>
   
 
