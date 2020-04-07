@@ -61,6 +61,7 @@ li.user-pro a:hover span, li.user-pro a:hover small {
     box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.04);
     margin-bottom: 25px;
     padding: 10px;
+    background-color: beige;
 }
 .panel-body {
     padding: 20px;
