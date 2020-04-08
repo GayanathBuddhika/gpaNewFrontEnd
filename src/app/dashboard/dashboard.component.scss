@@ -1,0 +1,23 @@
+.page-wrapper{
+    background-color: black;
+    z-index: 3;
+&.grid-container{
+    .hero-image{
+            //background-image: url("assets/images/cis2.jpg");
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            .img{
+                width:100%;
+                height:-webkit-fill-available;
+            }
+          
+    }
+}
+}
+
+// element.style {
+//     background-color: darkred;
+// }
