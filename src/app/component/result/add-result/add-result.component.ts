@@ -16,7 +16,15 @@ import { v4 as uuid } from 'uuid';
 export class AddResultComponent implements OnInit, AfterViewInit {
   resultForm: FormGroup;
   resultForm2: FormGroup;
-  batchs: any[] = [];
+  batchs: any[] = [{
+    label: '2014/15',
+    value: '2014/15'
+  },
+  {
+    label: '2015/23',
+    value: '2015/23'
+  }
+  ];
   headers: any[];
   degreeCourses: DegreeCourse[] = [];
   studentCourseList: StudentCourse[] = [];
@@ -34,7 +42,7 @@ export class AddResultComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     console.log("random number", uuid.v4());
-    this.getBatchs();
+    //this.getBatchs();
     this.getSubjects();
     this.getResultMark();
 
@@ -79,7 +87,7 @@ export class AddResultComponent implements OnInit, AfterViewInit {
       };
     
       // console.log("************* 66666666666", this.selectedResultView.studentCourse.student.batch);
-      // this.resultForm.get('batch').patchValue('2014/15');
+      this.resultForm.get('batch').patchValue( this.selectedResultView.studentCourse.student.batch);
     
       console.log("************* 77777777", this.selectedResultView.studentCourse.degreeCourse.course.name);
       this.resultForm.get('degreeCourse').patchValue(this.selectedResultView.studentCourse.degreeCourse);
@@ -107,15 +115,15 @@ export class AddResultComponent implements OnInit, AfterViewInit {
 
   getBatchs() {
     this.resultService.getbatchs().subscribe(data => {
-      console.log("batches data", data);
-      data.forEach(element => {
-        let newbatch = {
-          label: element,
-          value: element
-        }
-        this.batchs.push(newbatch);
-      });
-      console.log("new batches data", this.batchs);
+      // console.log("batches data", data);
+      // data.forEach(element => {
+      //   let newbatch = {
+      //     label: element,
+      //     value: element
+      //   }
+      //   this.batchs.push(newbatch);
+      // });
+      // console.log("new batches data", this.batchs);
     }, err => {
       console.log(err);
     })
