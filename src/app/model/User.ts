@@ -10,5 +10,6 @@ export class User{
     phoneNumber: string;
     department: Department;
     faculty: Faculty;
+    password:string;
     edit: Boolean;
 }

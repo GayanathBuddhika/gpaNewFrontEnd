@@ -1,3 +1,4 @@
+import { RequestUser } from './../model/requestUser';
 import { HttpClient } from '@angular/common/http';
 import { User } from './../model/User';
 import { BehaviorSubject, Subject, Observable } from 'rxjs';
@@ -7,6 +8,40 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UserService {
+
+  role = [
+    {
+      label: 'SYSTEM_ADMIN',
+      value: 'SYSTEM_ADMIN'
+    },
+    {
+      label: 'DEPARTMENT_ADMIN',
+      value: 'DEPARTMENT_ADMIN'
+    },
+    {
+      label: 'DEPARTMENT_HEAD',
+      value: 'DEPARTMENT_HEAD'
+    },
+    {
+      label: 'DEEN',
+      value: 'DEEN'
+    },
+    {
+      label: 'LECTURE',
+      value: 'LECTURE'
+    },
+    {
+      label: 'STUDENT',
+      value: 'STUDENT'
+    },
+
+  //   SYSTEM_ADMIN,
+	// DEPARTMENT_ADMIN,
+	// DEPARTMENT_HEAD,
+	// DEEN,
+	// LECTURE,
+	// c,
+  ]
 
 private _ngxModal_add = new BehaviorSubject<boolean>(false);
 private _ngxModal_edit = new BehaviorSubject<boolean>(false);
@@ -43,6 +78,11 @@ addUser(user: User) {
  deleteUser(userId: string) {
   //const headers = new HttpHeaders({ "Access-Control-Allow-Origin": "*" });    
   return this.http.post<any>("http://localhost:8080/user/deleteUser/"+ userId,{});
+}
+
+register(user: RequestUser) {
+  return this.http.post<any>("http://localhost:8080/register", user);
+
 }
 
 _set_ngxModal_add(value: boolean) {
