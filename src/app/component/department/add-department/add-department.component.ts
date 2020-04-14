@@ -82,7 +82,7 @@ export class AddDepartmentComponent implements OnInit {
     this.departmentForSave = this.departmentForm.value;
     if(this.edit){
       this.departmentForSave.id = this.selecttedDepartment.id;
-      //this.faculty.ai = this.selecttedFaculty.ai;
+      // this.faculty.ai = this.selecttedFaculty.ai;
       this.departmentForSave.edit = this.edit;
     }
     this.departmentService.addDepartment(this.departmentForSave).subscribe(data => {

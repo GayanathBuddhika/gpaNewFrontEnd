@@ -47,6 +47,7 @@ export class DepartmentListComponent implements OnInit {
     })
 
     this.departmentService._editDepartmentToList.subscribe(data => {
+      console.log("********* edit", data);
       let index = this.departmentList.findIndex(department => department.id === data.id);
       this.departmentList[index] = data;
     })
