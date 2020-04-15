@@ -1,74 +1,120 @@
 <form  [formGroup]="studentForm" (ngSubmit)="savestudent()">
                   
   <!-- for company list --> 
-  <div class="row">
+  <!-- <div class="row">
     <div class=" col-lg-3 col-md-4 col-sm-12 form-group">
       <label class="control-label">Department</label><span style="color: red">*</span>
     </div>
     <div class="col-lg-9 col-md-8 col-sm-12">
       <p-dropdown formControlName="department" #com  [options]="departmentList" [filter]="true" optionLabel="name" placeholder="Select a department" [style]="{'width':'100%'}"></p-dropdown>
-      <!-- fro validation -->
-    <!-- <app-field-error-display [errorIcon]="false" [displayError]="isFieldValid('company')" errorMsg="Company is required"></app-field-error-display> -->
+      fro validation
+    <app-field-error-display [errorIcon]="false" [displayError]="isFieldValid('company')" errorMsg="Company is required"></app-field-error-display>
     </div>
-  </div>
+  </div> -->
 
 
   <div class="row">
       <div class=" col-lg-3 col-md-4 col-sm-12 form-group">
-    <label class="control-label" for="form-control-1">Student Name</label>
+    <label class="control-label" for="form-control-1">Student Name</label><span style="color: red">*</span>
       </div>
       <div class="col-lg-9 col-md-8 col-sm-12">
-      <input type="text" class="form-control" formControlName="studentName" placeholder="Enter Student name">
+      <input type="text" class="form-control" formControlName="studentName" placeholder="Enter Student name" [ngClass]="{ 'is-invalid': submitted && f.studentName.errors }">
+      
+      <div *ngIf="submitted && f.studentName.errors" class="invalid-feedback">
+        <div *ngIf="f.studentName.errors.required">Student Name is required</div>
       </div>
+    </div>
+    
   </div>
   
 
   <div class="row">
       <div class=" col-lg-3 col-md-4 col-sm-12 form-group">
-    <label class="control-label" for="form-control-1">EP Number</label>
+    <label class="control-label" for="form-control-1">EP Number</label><span style="color: red">*</span>
       </div>
       <div class="col-lg-9 col-md-8 col-sm-12">
-      <input type="text" class="form-control" formControlName="epNumber" placeholder="Enter EP Number">
+      <input type="text" class="form-control" formControlName="epNumber" placeholder="Enter EP Number" [ngClass]="{ 'is-invalid': submitted && f.epNumber.errors }">
+      <div *ngIf="submitted && f.epNumber.errors" class="invalid-feedback">
+        <div *ngIf="f.epNumber.errors.required">EP Number is required</div>
+      </div>
       </div>
   </div>
+
+
   <div class="row">
       <div class=" col-lg-3 col-md-4 col-sm-12 form-group">
-    <label class="control-label" for="form-control-1">Registrations Number</label>
+    <label class="control-label" for="form-control-1">Registrations Number</label><span style="color: red">*</span>
       </div>
       <div class="col-lg-9 col-md-8 col-sm-12">
-      <input type="text" class="form-control" formControlName="registrationNumber" placeholder="Enter Registrations Number">
+      <input type="text" class="form-control" formControlName="registrationNumber" placeholder="Enter Registrations Number" [ngClass]="{ 'is-invalid': submitted && f.registrationNumber.errors}">
+        <div *ngIf="submitted && f.registrationNumber.errors" class="invalid-feedback">
+          <div *ngIf="f.registrationNumber.errors.required">Registration Number is required</div>
+        </div>
       </div>
   </div>
+
   <div class="row">
       <div class=" col-lg-3 col-md-4 col-sm-12 form-group">
-    <label class=" control-label" for="form-control-1">Batch</label>
+       <label class=" control-label" for="form-control-1">Batch</label><span style="color: red">*</span>
       </div>
       <div class="col-lg-9 col-md-8 col-sm-12">
-      <input type="text" class="form-control" formControlName="batch" placeholder="Enter batch">
+      <input type="text" class="form-control" formControlName="batch" placeholder="Enter batch" [ngClass]="{ 'is-invalid': submitted && f.batch.errors}">
+        <div *ngIf="submitted && f.batch.errors" class="invalid-feedback">
+          <div *ngIf="f.batch.errors.required">Batch is required</div>
+        </div>
+    </div>
+  </div>
+
+    <div class="row">
+      <div class=" col-lg-3 col-md-4 col-sm-12 form-group">
+        <label class="control-label" for="degreeProYear">Number of years </label><span style="color: red">*</span>
+      </div>
+      <div class="col-lg-9 col-md-8 col-sm-12">
+
+        <div class="radio">
+          <label>
+            <input type="radio" name="degreeProYear" formControlName="degreeProYear" value="3">3
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="degreeProYear"  formControlName="degreeProYear" value="4">4           
+          </label>  
+        </div>
+
+        <!-- <div *ngIf="submitted && f.degreeProYear.errors" class="invalid-feedback">
+          <div *ngIf="f.degreeProYear.errors.required">Degree program year is required</div>
+        </div> -->
+
       </div>
   </div>
+
+  
+  
+
+  
   <div class="row">
       <div class=" col-lg-3 col-md-4 col-sm-12 form-group">
-    <label class=" control-label" for="form-control-1">Degree_pro Year</label>
+    <label class=" control-label" for="form-control-1">Email</label><span style="color: red">*</span>
       </div>
       <div class="col-lg-9 col-md-8 col-sm-12">
-      <input type="text" class="form-control" formControlName="degreeProYear" placeholder="Enter name">
+      <input type="text" class="form-control" formControlName="email" placeholder="Enter Emaill" [ngClass]="{ 'is-invalid': submitted && f.email.errors}">
+      <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+        <div *ngIf="f.email.errors.required">email is required</div>
+        <div *ngIf="f.email.errors.email">Pleace enter valid email address</div>
+      </div>
       </div>
   </div>
+
   <div class="row">
       <div class=" col-lg-3 col-md-4 col-sm-12 form-group">
-    <label class=" control-label" for="form-control-1">Email</label>
+    <label class=" control-label" for="form-control-1">Phone Numer</label><span style="color: red">*</span>
       </div>
       <div class="col-lg-9 col-md-8 col-sm-12">
-      <input type="text" class="form-control" formControlName="email" placeholder="Enter Emaill">
+      <input type="text" class="form-control" formControlName="phoneNumber" placeholder="Enter PhoneNumber" [ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors}">
+      <div *ngIf="submitted && f.phoneNumber.errors" class="invalid-feedback">
+        <div *ngIf="f.phoneNumber.errors.required">Phone Number is required</div>
       </div>
-  </div>
-  <div class="row">
-      <div class=" col-lg-3 col-md-4 col-sm-12 form-group">
-    <label class=" control-label" for="form-control-1">Phone Numer</label>
-      </div>
-      <div class="col-lg-9 col-md-8 col-sm-12">
-      <input type="text" class="form-control" formControlName="phoneNumber" placeholder="Enter PhoneNumber">
       </div>
   </div>
   
@@ -84,5 +130,9 @@
   </div> -->
 
 
-<button type="submit" class="btn btn-space btn-success"><i class="icon icon-left mdi mdi-check"></i>Submit</button>                          
+  <div class="form-group">
+    <button [disabled]="false" class="btn btn-primary">
+         submit
+    </button>
+</div>                         
 </form>

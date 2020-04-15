@@ -1,3 +1,4 @@
+import { User } from './../../../model/User';
 import { DegreeProgram } from './../../../model/DegreeProgram';
 import { DegreeProgramService } from 'app/service/degree-program.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
@@ -14,6 +15,7 @@ export class DegreeProgramListComponent implements OnInit {
   headers: any[];
   degreeProgramList: DegreeProgram[] = [];
   onSelectedDegreeProgram: DegreeProgram;
+  currentUser : User = JSON.parse(localStorage.getItem('currentUser')).user;
   constructor(
     private degreeProgramService: DegreeProgramService,
     private modalService: BsModalService
@@ -21,7 +23,7 @@ export class DegreeProgramListComponent implements OnInit {
 
   ngOnInit() {
     
-    this.getAllDegreeProgram();
+    this.getAllDegreeProgrambyDepartmentId();
     // -- for primeNG table
     this.headers =
       [
@@ -53,8 +55,8 @@ export class DegreeProgramListComponent implements OnInit {
     })
   }
 
-  getAllDegreeProgram() {
-    this.degreeProgramService.getAllDegreeprogram().subscribe(data => {
+  getAllDegreeProgrambyDepartmentId() {
+    this.degreeProgramService.getDegreeByDepartmentId(this.currentUser.department.id).subscribe(data => {
       console.log("degreeProgram  ", data);
       this.degreeProgramList = data;
     })

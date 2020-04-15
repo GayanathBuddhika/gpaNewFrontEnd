@@ -34,13 +34,6 @@ export class AddDegreeProgramComponent implements OnInit {
   }
 
   ngOnInit() {
-    // const curentUser = this.authenticationService;
-    // this.authenticationService._addCurentUser.subscribe(data =>{
-    //   console.log("curent user ***",data)
-    //   this.currentUser = data;
-    //   console.log("curent user ***",this.currentUser)
-    // })
-    console.log("9999999999999",this.currentUser.department)
   
  
     this.degreeProgramForm = this.formBuilder.group({
