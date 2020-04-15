@@ -55,6 +55,7 @@ export class AddDepartmentComponent implements OnInit {
   ngAfterViewInit() {
     if (this.edit) {
       this.departmentForm.get('name').patchValue(this.selecttedDepartment.name);
+      this.departmentForm.get('faculty').patchValue(this.selecttedDepartment.faculty);
 
     }
 

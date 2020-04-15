@@ -1,3 +1,5 @@
+import { User } from './../../../model/User';
+import { AuthenticationService } from './../../../service/authentication.service';
 import { DepartmentService } from './../../../service/department.service';
 import { DegreeProgramService } from 'app/service/degree-program.service';
 import { Component, OnInit, Input } from '@angular/core';
@@ -15,23 +17,34 @@ export class AddDegreeProgramComponent implements OnInit {
   //---for reactive form
   degreeProgramForm: FormGroup;
   DegreeProgramList: DegreeProgram[];
-  degreeProgramForSave: DegreeProgram;
+  degreeProgramForSave = new  DegreeProgram();
   departmentList: Department[] = [];
+  currentUser : User = JSON.parse(localStorage.getItem('currentUser')).user;
+
   @Input() onSelectedDegreeProgram: DegreeProgram;
   @Input() edit: Boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
     private degreeProgramService: DegreeProgramService,
-    private departmentService: DepartmentService
-  ) { }
+    private departmentService: DepartmentService,
+    private authenticationService: AuthenticationService
+  ) { 
+     
+  }
 
   ngOnInit() {
-
-    this.getAllDepartment();
-
+    // const curentUser = this.authenticationService;
+    // this.authenticationService._addCurentUser.subscribe(data =>{
+    //   console.log("curent user ***",data)
+    //   this.currentUser = data;
+    //   console.log("curent user ***",this.currentUser)
+    // })
+    console.log("9999999999999",this.currentUser.department)
+  
+ 
     this.degreeProgramForm = this.formBuilder.group({
-      department: ["", Validators.required],
+      // department: ["", Validators.required],
       name: ["", Validators.required],
     });
 
@@ -41,7 +54,7 @@ export class AddDegreeProgramComponent implements OnInit {
   // --- set the selected employee value to the form input when edit value is true
   ngAfterViewInit() {
     if (this.edit) {
-      this.degreeProgramForm.get('department').patchValue(this.onSelectedDegreeProgram.department);
+      // this.degreeProgramForm.get('department').patchValue(this.onSelectedDegreeProgram.department);
       this.degreeProgramForm.get('name').patchValue(this.onSelectedDegreeProgram.name);
 
     }
@@ -49,15 +62,17 @@ export class AddDegreeProgramComponent implements OnInit {
   }
 
 
-  getAllDepartment() {
+  // getAllDepartment() {
 
-    this.departmentService.getAllDepartments().subscribe(data => {
-      this.departmentList = data;
-      console.log(this.departmentList);
-    }, err => {
-      console.log(err);
-    })
-  }
+  //   this.departmentService.getAllDepartments().subscribe(data => {
+  //     this.departmentList = data;
+  //     console.log(this.departmentList);
+  //   }, err => {
+  //     console.log(err);
+  //   })
+  // }
+
+
 
 
 
@@ -65,7 +80,8 @@ export class AddDegreeProgramComponent implements OnInit {
 
   saveDegreeProgram() {
     console.log("degreeprogram", this.degreeProgramForm.value);
-    this.degreeProgramForSave = this.degreeProgramForm.value;
+    this.degreeProgramForSave.name = this.degreeProgramForm.get('name').value;
+    this.degreeProgramForSave.department = this.currentUser.department;
     if (this.edit) {
       this.degreeProgramForSave.id = this.onSelectedDegreeProgram.id;
       this.degreeProgramForSave.edit = this.edit;

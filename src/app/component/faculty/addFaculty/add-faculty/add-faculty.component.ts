@@ -45,6 +45,7 @@ export class AddFacultyComponent implements OnInit {
     // --- set the selected employee value to the form input when edit value is true
     ngAfterViewInit() {
       if (this.edit) {
+        
         this.facultyForm.get('name').patchValue(this.selecttedFaculty.name);
        
       }
