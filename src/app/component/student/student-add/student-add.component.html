@@ -1,18 +1,5 @@
 <form  [formGroup]="studentForm" (ngSubmit)="savestudent()">
-                  
-  <!-- for company list --> 
-  <!-- <div class="row">
-    <div class=" col-lg-3 col-md-4 col-sm-12 form-group">
-      <label class="control-label">Department</label><span style="color: red">*</span>
-    </div>
-    <div class="col-lg-9 col-md-8 col-sm-12">
-      <p-dropdown formControlName="department" #com  [options]="departmentList" [filter]="true" optionLabel="name" placeholder="Select a department" [style]="{'width':'100%'}"></p-dropdown>
-      fro validation
-    <app-field-error-display [errorIcon]="false" [displayError]="isFieldValid('company')" errorMsg="Company is required"></app-field-error-display>
-    </div>
-  </div> -->
-
-
+  
   <div class="row">
       <div class=" col-lg-3 col-md-4 col-sm-12 form-group">
     <label class="control-label" for="form-control-1">Student Name</label><span style="color: red">*</span>

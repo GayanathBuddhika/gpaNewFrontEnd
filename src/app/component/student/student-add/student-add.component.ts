@@ -12,6 +12,7 @@ import { Student } from 'app/model/Student';
   styleUrls: ['./student-add.component.scss']
 })
 export class StudentAddComponent implements OnInit, AfterViewInit {
+  // meme form eke error msg popup ekak danna one / epnumber validate karanna one upercase walata
   //---for reactive form
   studentForm: FormGroup;
   submitted = false;

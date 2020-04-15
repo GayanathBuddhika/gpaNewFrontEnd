@@ -16,14 +16,15 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./add-lecture.component.scss']
 })
 export class AddLectureComponent implements OnInit {
-  //---for reactive form
+  // for reactive form
   userform: FormGroup;
   user: User[];
   userForSave: User;
   departmentList: Department[] = [];
   facultyList: Faculty[] = [];
   roleList: any[] = [];
-  roles:any[];
+  roles: any[];
+  submitted = false;
   @Input() onSelecteduser: User;
   @Input() edit: Boolean = false;
   constructor(
@@ -40,22 +41,14 @@ export class AddLectureComponent implements OnInit {
     this.getAllRole();
 
     this.userform = this.formBuilder.group({
-      role: ["", Validators.required],
-      faculty: ["", Validators.required],
-      department: ["", Validators.required],     
-      name: ["", Validators.required],
-      email: ["", Validators.required],
-      phoneNumber: ["", Validators.required],
+      role: ['', Validators.required],
+      faculty: ['', Validators.required],
+      department: ['', Validators.required],
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      phoneNumber: ['', Validators.required],
 
     });
-    // id: string;
-    // ai: string;  
-    // email: string;
-    // role: string;  
-    // name: string;  
-    // phoneNumber: string;
-    // department: Department;
-    // faculty: Faculty;
 
   }
 
@@ -70,6 +63,8 @@ export class AddLectureComponent implements OnInit {
     }
 
   }
+
+  get f() { return this.userform.controls }
 
   getAllDepartment() {
     this.departmentService.getAllDepartments().subscribe(data => {
@@ -93,15 +88,15 @@ export class AddLectureComponent implements OnInit {
     this.userService.getAllRole().subscribe(data => {
       console.log("Role", data);
       this.roles = data;
-     for(let i = 0 ; i < this.roles.length; i++){
-       let newRole = {
-         label: this.roles[i],
-         value: this.roles[i]
-       }
-       this.roleList.push(newRole);
- 
-     }
-     console.log("new role", this.roleList)
+      for (let i = 0; i < this.roles.length; i++) {
+        let newRole = {
+          label: this.roles[i],
+          value: this.roles[i]
+        }
+        this.roleList.push(newRole);
+
+      }
+      console.log("new role", this.roleList)
     }, err => {
       console.log(err)
     })
@@ -109,13 +104,17 @@ export class AddLectureComponent implements OnInit {
 
   saveUser() {
     console.log("LECTURE", this.userform.value);
+    this.submitted = true;
+    if(this.userform.invalid){
+      return;
+    }
     this.userForSave = this.userform.value;
     this.userForSave.edit = false;
     if (this.edit) {
       this.userForSave.id = this.onSelecteduser.id;
       this.userForSave.edit = this.edit;
     }
-    console.log("User",  this.userForSave);
+    console.log("User", this.userForSave);
     this.userService.addUser(this.userForSave).subscribe(data => {
       console.log("success", data);
 

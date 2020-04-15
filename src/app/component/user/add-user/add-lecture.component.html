@@ -1,59 +1,82 @@
 <form  [formGroup]="userform" (ngSubmit)="saveUser()">
-  
-  <!-- for department list --> 
+
   <div class="row">
-    <div class="form-group">
+    <div class=" col-lg-3 col-md-4 col-sm-12 form-group">
       <label class="control-label">Role</label><span style="color: red">*</span>
-      <p-dropdown formControlName="role"  [options]="roleList" [filter]="true" placeholder="Select a Role" [style]="{'width':'100%'}"></p-dropdown>
-      <!-- fro validation -->
-    <!-- <app-field-error-display [errorIcon]="false" [displayError]="isFieldValid('company')" errorMsg="Company is required"></app-field-error-display> -->
+    </div>
+    <div class="col-lg-9 col-md-8 col-sm-12">
+      <p-dropdown formControlName="role"  [options]="roleList" [filter]="true" placeholder="Select a Role" [style]="{'width':'100%'}" [ngClass]="{ 'is-invalid': submitted && f.role.errors }"></p-dropdown>
+      <div *ngIf="submitted && f.role.errors" class="invalid-feedback">
+        <div *ngIf="f.role.errors.required">Role is required</div>
+      </div>
     </div>
   </div> 
+
   <!-- for faclulty List -->
   <div class="row">
-    <div class="form-group">
+    <div class=" col-lg-3 col-md-4 col-sm-12 form-group">
       <label class="control-label">faculty</label><span style="color: red">*</span>
-      <p-dropdown formControlName="faculty" #com  [options]="facultyList" [filter]="true" optionLabel="name" placeholder="Select a faculty" [style]="{'width':'100%'}"></p-dropdown>
-      <!-- fro validation -->
-    <!-- <app-field-error-display [errorIcon]="false" [displayError]="isFieldValid('company')" errorMsg="Company is required"></app-field-error-display> -->
     </div>
+    <div class="col-lg-9 col-md-8 col-sm-12">
+      <p-dropdown formControlName="faculty" #com  [options]="facultyList" [filter]="true" optionLabel="name" placeholder="Select a faculty" [style]="{'width':'100%'}" [ngClass]="{ 'is-invalid': submitted && f.faculty.errors }"></p-dropdown>
+      <div *ngIf="submitted && f.faculty.errors" class="invalid-feedback">
+        <div *ngIf="f.faculty.errors.required">Faculty is required</div>
+      </div>
+    </div>
+    
   </div>
 
   <!-- for department list --> 
   <div class="row">
-    <div class="form-group">
+    <div class=" col-lg-3 col-md-4 col-sm-12 form-group">
       <label class="control-label">department</label><span style="color: red">*</span>
-      <p-dropdown formControlName="department" #com  [options]="departmentList" [filter]="true" optionLabel="name" placeholder="Select a department" [style]="{'width':'100%'}"></p-dropdown>
-      <!-- fro validation -->
-    <!-- <app-field-error-display [errorIcon]="false" [displayError]="isFieldValid('company')" errorMsg="Company is required"></app-field-error-display> -->
+    </div>
+    <div class="col-lg-9 col-md-8 col-sm-12">
+      <p-dropdown formControlName="department" #com  [options]="departmentList" [filter]="true" optionLabel="name" placeholder="Select a department" [style]="{'width':'100%'}"  [ngClass]="{ 'is-invalid': submitted && f.department.errors }"></p-dropdown>
+      <div *ngIf="submitted && f.department.errors" class="invalid-feedback">
+        <div *ngIf="f.department.errors.required">Department is required</div>
+      </div>
+    </div>    
+  </div>
+
+  <div class="row">
+    <div class=" col-lg-3 col-md-4 col-sm-12 form-group">
+       <label class="control-label" for="form-control-1">Name</label><span style="color: red">*</span>
+    </div>
+    <div class="col-lg-9 col-md-8 col-sm-12">
+      <input type="text" class="form-control" formControlName="name" placeholder="Enter name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+      <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+        <div *ngIf="f.name.errors.required">Name is required</div>
+      </div>
     </div>
   </div>
 
   <div class="row">
-    <div class="form-group">
-    <label class="col-sm-3 control-label" for="form-control-1">Name</label>
-    <div class="col-sm-9">
-      <input type="text" class="form-control" formControlName="name" placeholder="Enter name">
+    <div class=" col-lg-3 col-md-4 col-sm-12 form-group">
+      <label class="control-label" for="form-control-1">Email</label><span style="color: red">*</span>
+    </div>
+    <div class="col-lg-9 col-md-8 col-sm-12">
+      <input type="text" class="form-control" formControlName="email" placeholder="Enter email"  [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+      <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+        <div *ngIf="f.email.errors.required">Email is required</div>
+        <div *ngIf="f.email.errors.email">Pleace enter valid email</div>
+      </div>
     </div>
   </div>
-  </div>
+
 
   <div class="row">
-    <div class="form-group">
-    <label class="col-sm-3 control-label" for="form-control-1">Email</label>
-    <div class="col-sm-9">
-      <input type="text" class="form-control" formControlName="email" placeholder="Enter email">
-    </div>
-  </div>
-  </div>
-
-  <div class="row">
-    <label class="col-sm-3 control-label" for="form-control-1">phone Number</label>
-    <div class="col-sm-9">
-      <input type="text" class="form-control" formControlName="phoneNumber" placeholder="Enter Phone Number">
+    <div class=" col-lg-3 col-md-4 col-sm-12 form-group">
+      <label class="control-label" for="form-control-1">phone Number</label><span style="color: red">*</span>
+    </div>    
+    <div class="col-lg-9 col-md-8 col-sm-12">
+      <input type="text" class="form-control" formControlName="phoneNumber" placeholder="Enter Phone Number"  [ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }">
+      <div *ngIf="submitted && f.phoneNumber.errors" class="invalid-feedback">
+        <div *ngIf="f.phoneNumber.errors.required">Phone Number is required</div>
+      </div>
     </div>
   </div>
 
+<button type="submit" class="btn btn-space btn-success"><i class="icon icon-left mdi mdi-check"></i>Submit</button>   
 
-<button type="submit" class="btn btn-space btn-success"><i class="icon icon-left mdi mdi-check"></i>Submit</button>                          
 </form>
