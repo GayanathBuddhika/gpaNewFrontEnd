@@ -6,7 +6,7 @@ import { DegreeProgramService } from 'app/service/degree-program.service';
 import { CourseService } from './../../../service/course.service';
 import { Lecture } from './../../../model/Lecture';
 import { DegreeProgram } from 'app/model/DegreeProgram';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DegreeCourse } from 'app/model/DegreeCourse';
 import { Course } from 'app/model/Course';
@@ -16,11 +16,13 @@ import { Course } from 'app/model/Course';
   templateUrl: './add-course.component.html',
   styleUrls: ['./add-course.component.scss']
 })
-export class AddCourseComponent implements OnInit {
+export class AddCourseComponent implements OnInit, AfterViewInit {
   courseForm: FormGroup;
   degreeProgramList: DegreeProgram[];
   lectureList: User[];
   course = new Course();
+  currentUser: User = JSON.parse(localStorage.getItem('currentUser')).user;
+  submitted = false;
 
   @Input() onSelectedDegreeCourse: DegreeCourse;
   @Input() edit: Boolean = false;
@@ -34,11 +36,12 @@ export class AddCourseComponent implements OnInit {
 
   ngOnInit() {
 
-    this.getAllDegreeProgramByDepId();
+
     this.getAllLectuerByDepId();
+    this.getAllDegreeProgramByDepId();
 
     this.courseForm = this.formBuilder.group({
-      degreeProgram: ["", Validators.required],
+      degreePro:['',Validators.required],
       user: ["", Validators.required],
       courseCode: ["", Validators.required],
       name: ["", Validators.required],
@@ -47,7 +50,7 @@ export class AddCourseComponent implements OnInit {
   }
   ngAfterViewInit() {
     if (this.edit) {
-      this.courseForm.get('degreeProgram').patchValue(this.onSelectedDegreeCourse.degreeProgram);
+      this.courseForm.get('degreePro').patchValue(this.onSelectedDegreeCourse.degreeProgram);
       this.courseForm.get('user').patchValue(this.onSelectedDegreeCourse.user);
       this.courseForm.get('courseCode').patchValue(this.onSelectedDegreeCourse.course.courseCode);
       this.courseForm.get('name').patchValue(this.onSelectedDegreeCourse.course.name);
@@ -56,8 +59,11 @@ export class AddCourseComponent implements OnInit {
 
   }
 
+  get f(){return this.courseForm.controls}
+
   getAllDegreeProgramByDepId() {
-    this.degreeProgramService.getDegreeByDepartmentId("10").subscribe(data => {
+    this.degreeProgramService.getDegreeByDepartmentId(this.currentUser.department.id).subscribe(data => {
+      console.log("degree proooooo",data);
       this.degreeProgramList = data;
 
     }, err => {
@@ -66,7 +72,7 @@ export class AddCourseComponent implements OnInit {
   }
 
   getAllLectuerByDepId() {
-    this.userService.getAllLecturesByDepId("10").subscribe(data => {
+    this.userService.getAllLecturesByDepId(this.currentUser.department.id).subscribe(data => {
 
       console.log("lecture 33333333333",data);
       this.lectureList = data;
@@ -76,9 +82,13 @@ export class AddCourseComponent implements OnInit {
   }
 
   saveCourse() {
+     this.submitted = true
+    if(this.courseForm.invalid){
+      return;
+    }
 
-    console.log("course form Data", this.courseForm.get('degreeProgram').value);
-    let degreeId = this.courseForm.get('degreeProgram').value.id;
+    console.log("course form Data", this.courseForm.value);
+    let degreeId = this.courseForm.get('degreePro').value.id;
     let lectureId = this.courseForm.get('user').value.id;
     this.course.courseCode = this.courseForm.get('courseCode').value;
     this.course.name = this.courseForm.get('name').value;

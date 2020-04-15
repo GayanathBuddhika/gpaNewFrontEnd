@@ -1,3 +1,4 @@
+import { User } from './../../../model/User';
 import { CourseService } from './../../../service/course.service';
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { DegreeCourse } from 'app/model/DegreeCourse';
@@ -13,6 +14,7 @@ export class CourseListComponent implements OnInit {
   headers: any[];
   degreeCourseList: DegreeCourse[] = [];
   onSelectedDegreeCourse: DegreeCourse;
+  currentUser: User = JSON.parse(localStorage.getItem('currentUser')).user;
   constructor(private courseService: CourseService,
     private modalService: BsModalService) { }
 
@@ -53,7 +55,7 @@ export class CourseListComponent implements OnInit {
   }
 
   getAllDepCourseByDepId() {
-    this.courseService.getAllDepCourse("10").subscribe(data => {
+    this.courseService.getAllDepCourse(this.currentUser.department.id).subscribe(data => {
       this.degreeCourseList = data;
       console.log("dep Course", data);
     }, err => {
